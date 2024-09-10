@@ -80,7 +80,7 @@ def plot_ppi_network(nodes, output_dir):
 
 def calculate_node_degrees(nodes, output_dir):
     G = nx.Graph()
-    G.add_edges_from(zip(nodes.iloc[:, 0], nodes.iloc[:, 1]))
+    G.add_edges_from(zip(nodes["preferredName_A"], nodes["preferredName_B"]))
     degree_dict = dict(G.degree(G.nodes()))
     df = pd.DataFrame(list(degree_dict.items()), columns=["node", "degree"])
     df_sorted = df.sort_values(by="degree", ascending=False)
@@ -94,6 +94,7 @@ def plot_core_targets(degree_df, nodes, output_dir):
     edges = [
         (row["preferredName_A"], row["preferredName_B"]) for _, row in nodes.iterrows()
     ]
+
     G = nx.Graph()
     G.add_nodes_from(degree_dict.keys())
     G.add_edges_from(edges)
@@ -200,7 +201,11 @@ def main(gene_names_file, output_dir):
     plot_core_targets(degree_df, nodes, output_dir)
 
 
-# 输入示例
-gene_names_file = "/home/liuyan/projects/package/biorange/biorange/data/shared targets of drugs and diseases.csv"
-output_dir = "/home/liuyan/projects/package/biorange/results/output"
-main(gene_names_file, output_dir)
+if __name__ == "__main__":
+    # 输入示例
+    gene_names_file = (
+        "/home/liuyan/projects/package/biorange/biorange/venn/intersection.txt"
+    )
+    output_dir = "./results/output2/ppi"
+    os.makedirs(output_dir, exist_ok=True)
+    main(gene_names_file, output_dir)
