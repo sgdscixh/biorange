@@ -2,9 +2,10 @@ import os
 import pandas as pd
 import gzip
 import mygene
-from typing import Generator
+from typing import Generator, Union, List, Dict
 import tempfile
 from biorange.logger import get_logger
+from biorange.utils.package_fileload import get_data_file_path
 
 # 设置日志记录
 logger = get_logger(__name__)
@@ -64,12 +65,17 @@ class TCMDataProcessor:
         return temp_file_path
 
     def _merge_with_large_chemical_data(
-        self, inchikey_file: str, gzipped_file: str
+        self, inchikeys: Union[str, List[str]], gzipped_file: str
     ) -> pd.DataFrame:
         """将 InChIKey 数据与大型化学物质数据进行匹配合并。"""
-        input_df = self._read_csv(inchikey_file)
+        if isinstance(inchikeys, str):
+            inchikey_list = [inchikeys]
+        else:
+            inchikey_list = inchikeys
+
+        input_df = pd.DataFrame({"inchikey": inchikey_list})
         if input_df.empty:
-            logger.error(f"{inchikey_file} is empty. Skipping this merge step.")
+            logger.error(f"InChIKey list is empty. Skipping this merge step.")
             return pd.DataFrame()
 
         results = [
@@ -83,22 +89,18 @@ class TCMDataProcessor:
         ]
 
         result_df = pd.concat(results, ignore_index=True)
-        chemical_file_path = self._save_dataframe(
-            result_df, "TCM_stitch_chemical_id.csv"
-        )
-        return result_df, chemical_file_path
+        return result_df
 
     def _map_chemical_to_protein(
-        self, chemical_file: str, protein_file: str
+        self, chemical_df: pd.DataFrame, protein_file: str
     ) -> pd.DataFrame:
         """将化学物质 ID 映射到蛋白质，并输出中间结果。"""
-        input_df = self._read_csv(chemical_file)
-        if input_df.empty:
-            logger.error(f"{chemical_file} is empty. Skipping this mapping step.")
+        if chemical_df.empty:
+            logger.error(f"Chemical DataFrame is empty. Skipping this mapping step.")
             return pd.DataFrame()
 
         results = [
-            input_df.merge(
+            chemical_df.merge(
                 chunk[["chemical", "protein", "combined_score"]],
                 left_on="flat_chemical_id",
                 right_on="chemical",
@@ -108,18 +110,16 @@ class TCMDataProcessor:
         ]
 
         result_df = pd.concat(results, ignore_index=True)
-        protein_file_path = self._save_dataframe(result_df, "stitch_ensp_score.csv")
-        return result_df, protein_file_path
+        return result_df
 
-    def _convert_protein_to_gene_names(self, protein_file: str) -> pd.DataFrame:
+    def _convert_protein_to_gene_names(self, protein_df: pd.DataFrame) -> pd.DataFrame:
         """将 protein ID 转换为基因名，并包含 combined_score 列。"""
-        df = self._read_csv(protein_file)
-        if df.empty:
-            logger.error(f"{protein_file} is empty. Skipping gene name conversion.")
+        if protein_df.empty:
+            logger.error(f"Protein DataFrame is empty. Skipping gene name conversion.")
             return pd.DataFrame()
 
-        df["ENSP"] = df["protein"].str.split(".").str[1]
-        ensembl_ids = df["ENSP"].tolist()
+        protein_df["ENSP"] = protein_df["protein"].str.split(".").str[1]
+        ensembl_ids = protein_df["ENSP"].tolist()
 
         gene_info = self.mg.querymany(
             ensembl_ids, scopes="ensembl.protein", fields="symbol", species="human"
@@ -130,7 +130,7 @@ class TCMDataProcessor:
         ]
 
         gene_df = pd.DataFrame(results)
-        final_df = df.merge(gene_df, on="ENSP", how="left")
+        final_df = protein_df.merge(gene_df, on="ENSP", how="left")
         final_df["source"] = "STITCH"
         final_df = final_df[
             ["inchikey", "ENSP", "gene_name", "combined_score", "source"]
@@ -147,82 +147,81 @@ class TCMDataProcessor:
             f"Number of rows with missing combined_score: {final_df['combined_score'].isnull().sum()}"
         )
 
-        final_file_path = self._save_dataframe(final_df, "stitch_target_raw.csv")
-
-        # 生成过滤后的文件
-        filtered_df = final_df[final_df["combined_score"] > 300]
-        filtered_file_path = self._save_dataframe(
-            filtered_df, "stitch_output_target.csv"
-        )
-
-        # 提取未查询到基因名的ENSP
-        ensp_without_gene_name_df = df[
-            df["ENSP"].isin(gene_df[gene_df["gene_name"] == "N/A"]["ENSP"])
-        ]
-        ensp_without_gene_name_file_path = self._save_dataframe(
-            ensp_without_gene_name_df[["inchikey", "ENSP", "combined_score"]],
-            "ENSP_without_gene_name.csv",
-        )
-
-        return final_df, filtered_df, ensp_without_gene_name_df
+        return final_df
 
     def search(
         self,
-        inchikey_file: str,
-        chemical_file: str,
-        protein_file: str,
-        output_raw_file: str = "stitch_target_raw.csv",
-        output_filtered_file: str = "stitch_output_target.csv",
-        output_ensp_without_gene_name_file: str = "ENSP_without_gene_name.csv",
+        inchikeys: Union[str, List[str]],
+        chemical_file: str = get_data_file_path("TCMSP_NGM_STITCH_INCHIKEY.tsv.gz"),
+        protein_file: str = get_data_file_path(
+            "9606.protein_chemical.links.transfer.v5.0.tsv.gz"
+        ),
     ) -> pd.DataFrame:
         """主接口：根据 InChIKey 查找对应的基因名。"""
-        chemical_df, chemical_file_path = self._merge_with_large_chemical_data(
-            inchikey_file, chemical_file
-        )
+
+        chemical_df = self._merge_with_large_chemical_data(inchikeys, chemical_file)
         if chemical_df.empty:
             logger.error(
                 "Failed to merge InChIKey with chemical data. Aborting search."
             )
             return pd.DataFrame()
 
-        protein_df, protein_file_path = self._map_chemical_to_protein(
-            chemical_file_path, protein_file
-        )
+        protein_df = self._map_chemical_to_protein(chemical_df, protein_file)
         if protein_df.empty:
             logger.error("Failed to map chemicals to proteins. Aborting search.")
             return pd.DataFrame()
 
-        final_df, filtered_df, ensp_without_gene_name_df = (
-            self._convert_protein_to_gene_names(protein_file_path)
-        )
+        final_df = self._convert_protein_to_gene_names(protein_df)
+        if final_df.empty:
+            logger.error("Failed to convert proteins to gene names.")
+            return pd.DataFrame()
+
+        # 过滤后的 DataFrame
+        filtered_df = final_df[final_df["combined_score"] > 300]
+
+        return filtered_df
+
+    def get_rawdata(
+        self,
+        inchikeys: Union[str, List[str]],
+        chemical_file: str = get_data_file_path("TCMSP_NGM_STITCH_INCHIKEY.tsv.gz"),
+        protein_file: str = get_data_file_path(
+            "9606.protein_chemical.links.transfer.v5.0.tsv.gz"
+        ),
+    ) -> pd.DataFrame:
+        """获取原始数据并保存到文件。"""
+        chemical_df = self._merge_with_large_chemical_data(inchikeys, chemical_file)
+        if chemical_df.empty:
+            logger.error(
+                "Failed to merge InChIKey with chemical data. Aborting search."
+            )
+            return pd.DataFrame()
+
+        protein_df = self._map_chemical_to_protein(chemical_df, protein_file)
+        if protein_df.empty:
+            logger.error("Failed to map chemicals to proteins. Aborting search.")
+            return pd.DataFrame()
+
+        final_df = self._convert_protein_to_gene_names(protein_df)
         if final_df.empty:
             logger.error("Failed to convert proteins to gene names.")
             return pd.DataFrame()
 
         # 将最终结果保存到指定路径
-        final_df.to_csv(output_raw_file, index=False)
-        filtered_df.to_csv(output_filtered_file, index=False)
-        ensp_without_gene_name_df.to_csv(
-            output_ensp_without_gene_name_file, index=False
-        )
-        logger.info(f"Final result saved to {output_raw_file}")
-        logger.info(f"Filtered result saved to {output_filtered_file}")
-        logger.info(
-            f"ENSP without gene name saved to {output_ensp_without_gene_name_file}"
-        )
+        final_file_path = self._save_dataframe(final_df, "stitch_target_raw.csv")
+        logger.info(f"Final raw data saved to {final_file_path}")
 
         return final_df
 
 
 stich_inchikey_target = TCMDataProcessor().search
+
 # 使用示例
 if __name__ == "__main__":
     processor = TCMDataProcessor()
+    df = pd.read_csv("biorange/data/inchikey.csv")
+    df_list = df["inchikey"].tolist()
     result_df = processor.search(
-        inchikey_file="biorange/data/inchikey.csv",
-        chemical_file="biorange/data/TCMSP_NGM_STITCH_INCHIKEY.tsv.gz",
-        protein_file="biorange/data/9606.protein_chemical.links.transfer.v5.0.tsv.gz",
-        output_raw_file="./results/output2/moltarget/stitch_target_raw.csv",
-        output_filtered_file="./results/output2/moltarget/stitch_output_target.csv",
-        output_ensp_without_gene_name_file="./results/output2/moltarget/ENSP_without_gene_name.csv",
+        inchikeys=df_list,
     )
+    print(result_df)
