@@ -224,7 +224,6 @@ class ChEMBLTargetScraper:
         except requests.exceptions.RequestException as e:
             logger.error(f"Returning empty DataFrame for {smiles} with error: {e}")
             return pd.DataFrame()
-  
 
     def search_smiles(self, smiles: str) -> pd.DataFrame:
         df_predictions = self.get_target_predictions(smiles)
@@ -233,7 +232,8 @@ class ChEMBLTargetScraper:
 
         df_filtered = df_predictions[
             (df_predictions["organism"] == "Homo sapiens")
-            & (df_predictions["80%"] == "active")
+            & ((df_predictions["80%"] == "active") | (df_predictions["80%"] == "both"))
+            & (df_predictions["threshold"] > 6)
         ]
         unique_chembl_ids = df_filtered["target_chemblid"].unique().tolist()
 
@@ -252,9 +252,9 @@ class ChEMBLTargetScraper:
         df_merged["source"] = "chembal"
         df_result = self.rename_and_select(df_merged)
         return df_result
-    
+
     def rename_and_select(self, data):
-            
+
         column_mapping = {
             "smiles": "smiles",
             "gene_name": "targets",
@@ -264,10 +264,12 @@ class ChEMBLTargetScraper:
             return pd.DataFrame(columns=list(column_mapping.values()))
 
         return data.rename(columns=column_mapping)[list(column_mapping.values())]
-    #TODO 以后提供获取原始数据的方法
+
+    # TODO 以后提供获取原始数据的方法
+
 
 if __name__ == "__main__":
     client = ChEMBLTargetScraper()
-    smiles = "CCO"
+    smiles = "C=C1CCOC1=O"
     df = client.search_smiles(smiles)
     df.to_csv("results/output.csv", index=False)

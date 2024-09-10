@@ -40,17 +40,20 @@ class OmimDiseaseScraper:
         exploded_df = exploded_df.drop_duplicates(subset=["Gene Symbols"])
         if exploded_df.empty:
             print("No matches found for the given phenotypes.")
-            return pd.DataFrame(columns=["disease", "dis_targets", "source"])
+            return pd.DataFrame(columns=["disease", "gene_name", "source"])
         # 创建一个新的表格，并在第一列增加“data_source”列，内容为“OMIM”
         new_df = pd.DataFrame()
         new_df["disease"] = exploded_df["Phenotype"].values
-        new_df["dis_targets"] = exploded_df["Gene Symbols"].values
+        new_df["gene_name"] = exploded_df["Gene Symbols"].values
         new_df["source"] = ["OMIM"] * len(exploded_df)
 
         return new_df
 
 
+omim_disease_target = OmimDiseaseScraper().search
+
 if __name__ == "__main__":
     searcher = OmimDiseaseScraper()
-    result_df = searcher.search("Lung cancer")
+    result_df = searcher.search("Osteoarthritis")
+    result_df.to_csv("results/output2/diseltarge/omim_output_target.csv", index=False)
     print(result_df)

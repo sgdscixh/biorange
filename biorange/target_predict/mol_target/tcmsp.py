@@ -40,14 +40,16 @@ class TCMSPTargetScraper:
             results_df = filtered_df[["smiles", "Gene Names", "source"]].rename(
                 columns={"Gene Names": "targets"}
             )
-        results_df = results_df.dropna(subset=['targets'])
+        results_df = results_df.dropna(subset=["targets"])
         return results_df
 
+
+tcmsp_smiles_target = TCMSPTargetScraper().search_smiles
 
 # 示例使用
 if __name__ == "__main__":
     searcher = TCMSPTargetScraper()
 
-    single_smiles = "CCO"
+    single_smiles = "C1=CC(=CC=C1C2=CC(=O)C3=C(C=C(C=C3O2)O)O)O"
     result = searcher.search_smiles(single_smiles)
     result.to_csv("results/single_smiles.csv", index=False)

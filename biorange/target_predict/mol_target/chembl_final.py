@@ -238,12 +238,23 @@ class ChEMBLTargetScraper:
 
         df_filtered = df_predictions[
             (df_predictions["organism"] == "Homo sapiens")
-            & (df_predictions["80%"] == "active")
-            & (df_predictions["threshold"] > 6)
+            & ((df_predictions["80%"] == "active") | (df_predictions["80%"] == "both"))
+            & (df_predictions["threshold"] >= 6)
         ]
         unique_chembl_ids = df_filtered["target_chemblid"].unique().tolist()
 
         df_genes = self.get_dataframe_from_ids(unique_chembl_ids)
+
+        # Debug: Print the structure of df_genes
+        logger.debug(f"df_genes columns: {df_genes.columns}")
+        logger.debug(f"df_genes head: {df_genes.head()}")
+
+        if not {"chembal", "gene_name"}.issubset(df_genes.columns):
+            logger.error(
+                "Expected columns 'chembal' and 'gene_name' not found in df_genes"
+            )
+            return pd.DataFrame()
+
         df_genes = df_genes[["chembal", "gene_name"]]
 
         df_merged = pd.merge(
@@ -274,6 +285,8 @@ class ChEMBLTargetScraper:
     # TODO 以后提供获取原始数据的方法
 
 
+chembl_smiles_target = ChEMBLTargetScraper().search_smiles
+
 if __name__ == "__main__":
     client = ChEMBLTargetScraper()
     # 读取CSV文件中的SMILES列
@@ -287,8 +300,8 @@ if __name__ == "__main__":
         all_results = pd.concat([all_results, df], ignore_index=True)
 
     all_results.to_csv(
-        "./results/output/moltarget/chembl_output_target.csv", index=False
+        "./results/output2/moltarget/chembl_output_target.csv", index=False
     )
     client.all_predictions.to_csv(
-        "./results/output/moltarget/chembl_all_predictions.csv", index=False
+        "./results/output2/moltarget/chembl_all_predictions.csv", index=False
     )  # 保存所有预测结果

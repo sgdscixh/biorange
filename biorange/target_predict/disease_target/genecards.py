@@ -127,6 +127,8 @@ class GenecardsDiseaseScraper:
         return result
 
 
+genecards_disease_target = GenecardsDiseaseScraper().search
+
 # 使用示例
 if __name__ == "__main__":
     downloader = GenecardsDiseaseScraper()
