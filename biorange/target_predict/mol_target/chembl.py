@@ -271,5 +271,7 @@ class ChEMBLTargetScraper:
 if __name__ == "__main__":
     client = ChEMBLTargetScraper()
     smiles = "C=C1CCOC1=O"
+    # df = pd.read_csv("biorange/data/smiles.csv")
+    # df_list = df["smiles"].tolist()
     df = client.search_smiles(smiles)
     df.to_csv("results/output.csv", index=False)
