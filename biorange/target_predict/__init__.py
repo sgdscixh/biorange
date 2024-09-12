@@ -9,10 +9,11 @@ from biorange.target_predict.mol_target.stitch_inchikey import (
     stich_inchikey_target,
 )
 
-from biorange.target_predict.mol_target.stitch import (
-    StichTargetSmilesScraper,
-    stich_smiles_target,
-)
+# TODO 还是文件夹逻辑，不统一待修改
+# from biorange.target_predict.mol_target.stitch import (
+#     StichTargetSmilesScraper,
+#     stich_smiles_target,
+# )
 
 
 from biorange.target_predict.mol_target.tcmsp_inchikey import (

@@ -21,21 +21,21 @@ class TCMSPTargetScraper:
         logger.debug(f"Merged dataframe shape: {merged_df.shape}")
         return merged_df
 
-    def search_smiles(self, input_smiles):
-        logger.info(f"Searching for SMILES: {input_smiles}")
+    def search_smiles(self, smiles):
+        logger.info(f"Searching for SMILES: {smiles}")
 
         # 筛选输入的smiles
-        filtered_df = self.merged_df[self.merged_df["smiles"] == input_smiles].copy()
+        filtered_df = self.merged_df[self.merged_df["smiles"] == smiles].copy()
         filtered_df["source"] = "TCMSP"
 
         if filtered_df.empty:
-            logger.warning(f"No matches found for SMILES: {input_smiles}")
+            logger.warning(f"No matches found for SMILES: {smiles}")
             # 如果没有匹配的smiles
             results_df = pd.DataFrame(
-                {"smiles": [input_smiles], "targets": [None], "source": ["TCMSP"]}
+                {"smiles": [smiles], "targets": [None], "source": ["TCMSP"]}
             )
         else:
-            logger.info(f"Matches found for SMILES: {input_smiles}")
+            logger.info(f"Matches found for SMILES: {smiles}")
             # 选择需要的列并重命名
             results_df = filtered_df[["smiles", "Gene Names", "source"]].rename(
                 columns={"Gene Names": "targets"}
@@ -53,3 +53,4 @@ if __name__ == "__main__":
     single_smiles = "C1=CC(=CC=C1C2=CC(=O)C3=C(C=C(C=C3O2)O)O)O"
     result = searcher.search_smiles(single_smiles)
     result.to_csv("results/single_smiles.csv", index=False)
+    print(result)

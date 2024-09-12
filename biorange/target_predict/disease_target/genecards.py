@@ -112,16 +112,16 @@ class GenecardsDiseaseScraper:
         except Exception as e:
             print(f"An error occurred: {e}")
 
-    def search(self, query_string):
+    def search(self, diseases):
         """主方法：尝试读取本地文件，如果不存在则在线下载并返回 DataFrame"""
         df = self.read_local_file()
         if df.empty:
-            self.download_file(query_string)
+            self.download_file(diseases)
             df = self.read_local_file()
         result = pd.DataFrame()
         if df.empty:
             return pd.DataFrame(cloumns=["disease", "gene_name", "source"])
-        result["disease"] = [query_string] * len(df)
+        result["disease"] = [diseases] * len(df)
         result["gene_name"] = df["Gene Symbol"].values
         result["source"] = "GeneCards"
         return result

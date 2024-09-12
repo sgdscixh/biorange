@@ -11,15 +11,15 @@ class OmimDiseaseScraper:
     ):
         self.df = pd.read_table(get_data_file_path(file_path))
 
-    def search(self, phenotypes):
+    def search(self, diseases):
         # 如果输入是字符串，则将其转换为包含一个元素的列表
-        if isinstance(phenotypes, str):
-            phenotypes = [phenotypes]
+        if isinstance(diseases, str):
+            diseases = [diseases]
         # 创建一个空的DataFrame来存储匹配结果
         filtered_df = pd.DataFrame()
 
         # 遍历输入的Phenotype列表，进行部分匹配
-        for phenotype in phenotypes:
+        for phenotype in diseases:
             # 使用str.contains进行部分匹配，忽略大小写
             matches = self.df[
                 self.df["Phenotype"].str.contains(phenotype, case=False, na=False)
