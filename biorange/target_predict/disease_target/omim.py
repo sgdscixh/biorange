@@ -55,5 +55,8 @@ omim_disease_target = OmimDiseaseScraper().search
 if __name__ == "__main__":
     searcher = OmimDiseaseScraper()
     result_df = searcher.search("Osteoarthritis")
-    result_df.to_csv("results/output2/diseltarge/omim_output_target.csv", index=False)
+    # result_df.to_csv(
+    #     "results/output2/diseltarge/omim_output_target_white matter injury.csv",
+    #     index=False,
+    # )
     print(result_df)

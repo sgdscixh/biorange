@@ -120,9 +120,9 @@ class GenecardsDiseaseScraper:
             df = self.read_local_file()
         result = pd.DataFrame()
         if df.empty:
-            return pd.DataFrame(cloumns=["disease", "dis_targets", "source"])
-        result["dis_targets"] = df["Gene Symbol"].values
-        result["disease"] = query_string
+            return pd.DataFrame(cloumns=["disease", "gene_name", "source"])
+        result["disease"] = [query_string] * len(df)
+        result["gene_name"] = df["Gene Symbol"].values
         result["source"] = "GeneCards"
         return result
 
