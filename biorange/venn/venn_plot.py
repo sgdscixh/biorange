@@ -1,4 +1,5 @@
 import os
+import pandas as pd
 import matplotlib.pyplot as plt
 from matplotlib_venn import venn2, venn2_circles, venn3, venn3_circles
 from biorange.venn.venn_config import VennPlotConfig
@@ -66,12 +67,45 @@ class VennPlotter:
         )
 
         if filename:
-            output_dir = os.path.join("results", "plot")
+            output_dir = os.path.join("results", "venn")
             os.makedirs(output_dir, exist_ok=True)
             filepath = os.path.join(output_dir, f"venn-{filename}")
             print(f"Saving plot to {filepath}")
             plt.savefig(filepath)
+            self.intersection(groups, labels, filename)
+        self.intersection(groups, labels)
         plt.show()
+
+    def intersection(self, groups, labels, filename=None):
+        sets = [set(group) for group in groups]
+        intersections = {}
+
+        if len(sets) == 2:
+            intersections[f"{labels[0]}&{labels[1]}"] = sets[0] & sets[1]
+        elif len(sets) == 3:
+            intersections[f"{labels[0]}&{labels[1]}"] = sets[0] & sets[1]
+            intersections[f"{labels[0]}&{labels[2]}"] = sets[0] & sets[2]
+            intersections[f"{labels[1]}&{labels[2]}"] = sets[1] & sets[2]
+            intersections[f"{labels[0]}&{labels[1]}&{labels[2]}"] = (
+                sets[0] & sets[1] & sets[2]
+            )
+
+        # 将交集转换为 pandas DataFrame，交集名称作为列名
+        df = pd.DataFrame(
+            dict(
+                [(key, pd.Series(list(value))) for key, value in intersections.items()]
+            )
+        )
+
+        if filename:
+            output_dir = os.path.join("results", "venn")
+            filepath = os.path.join(
+                output_dir, f"venn-data-{os.path.splitext(filename)[0]}.csv"
+            )
+            df.to_csv(filepath, index=False)
+            print(f"Intersection data saved to {filepath}")
+        else:
+            print(df)
 
 
 vennplot = VennPlotter().plot_venn
@@ -92,43 +126,43 @@ if __name__ == "__main__":
         "Ingredients_Targets_venn.png",
     )
 
-    # Genecards = ["H", "I", "J", "K"]
-    # OMIM = ["I", "J", "L", "M"]
-    # TTD = ["J", "K", "L", "N"]
-    # plotter.plot_venn(
-    #     [Genecards, OMIM, TTD],
-    #     ["Genecards", "OMIM", "TTD"],
-    #     "Disease_Targets_venn",
-    #     "Disease_Targets_venn.png",
-    # )
+    Genecards = ["H", "I", "J", "K"]
+    OMIM = ["I", "J", "L", "M"]
+    TTD = ["J", "K", "L", "N"]
+    plotter.plot_venn(
+        [Genecards, OMIM, TTD],
+        ["Genecards", "OMIM", "TTD"],
+        "Disease_Targets_venn",
+        "Disease_Targets_venn.png",
+    )
 
-    # Ingredient_Targets = ["O", "P", "Q", "R"]
-    # Disease_Targets = ["P", "Q", "S", "T"]
-    # plotter.plot_venn(
-    #     [Ingredient_Targets, Disease_Targets],
-    #     ["Ingredient_Targets", "Disease_Targets"],
-    #     "Ingredient_Disease_Targets_veen",
-    #     "Ingredient_Disease_Targets_veen.png",
-    # )
+    Ingredient_Targets = ["O", "P", "Q", "R"]
+    Disease_Targets = ["P", "Q", "S", "T"]
+    plotter.plot_venn(
+        [Ingredient_Targets, Disease_Targets],
+        ["Ingredient_Targets", "Disease_Targets"],
+        "Ingredient_Disease_Targets_veen",
+        "Ingredient_Disease_Targets_veen.png",
+    )
 
-    # # 使用自定义配置
-    # custom_config = VennPlotConfig(
-    #     figsize=(8, 6), dpi=150, title_fontsize=16, label_fontsize=12
-    # )
-    # custom_plotter = VennPlotter(config=custom_config)
-    # custom_plotter.plot_venn(
-    #     [TCMSP, Chembl],
-    #     ["TCMSP", "Chembl"],
-    #     "Custom Venn Diagram",
-    #     "test_custom_venn.pdf",
-    # )
+    # 使用自定义配置
+    custom_config = VennPlotConfig(
+        figsize=(8, 6), dpi=150, title_fontsize=16, label_fontsize=12
+    )
+    custom_plotter = VennPlotter(config=custom_config)
+    custom_plotter.plot_venn(
+        [TCMSP, Chembl],
+        ["TCMSP", "Chembl"],
+        "Custom Venn Diagram",
+        "test_custom_venn.pdf",
+    )
 
-    # # 动态更新配置
-    # plotter.plot_venn(
-    #     [TCMSP, Chembl, STITCH],
-    #     ["TCMSP", "Chembl", "STITCH"],
-    #     "Updated Venn Diagram",
-    #     "test_updated_venn.pdf",
-    #     title_fontsize=18,
-    #     label_fontsize=14,
-    # )
+    # 动态更新配置
+    plotter.plot_venn(
+        [TCMSP, Chembl, STITCH],
+        ["TCMSP", "Chembl", "STITCH"],
+        "Updated Venn Diagram",
+        "test_updated_venn.pdf",
+        title_fontsize=18,
+        label_fontsize=14,
+    )
