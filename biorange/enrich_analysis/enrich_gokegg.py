@@ -94,12 +94,12 @@ if __name__ == "__main__":
     print("GOKEGG集分析结果:")
     print(all_results.head(10))
 
-    # 仅执行GO分析
-    go_results = perform_enrichment_analysis(gene_list, analysis_type="go")
-    print("\nGO富集分析结果:")
-    print(go_results.head(10))
+    # # 仅执行GO分析
+    # go_results = perform_enrichment_analysis(gene_list, analysis_type="go")
+    # print("\nGO富集分析结果:")
+    # print(go_results.head(10))
 
-    # 仅执行KEGG分析
-    kegg_results = perform_enrichment_analysis(gene_list, analysis_type="kegg")
-    print("\nKEGG富集分析结果:")
-    print(kegg_results.head(10))
+    # # 仅执行KEGG分析
+    # kegg_results = perform_enrichment_analysis(gene_list, analysis_type="kegg")
+    # print("\nKEGG富集分析结果:")
+    # print(kegg_results.head(10))
