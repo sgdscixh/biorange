@@ -225,4 +225,4 @@ if __name__ == "__main__":
         inchikeys=df_list,
     )
     print(result_df)
-    # result_df.to_csv("results/output2/stitch_target_raw333.csv", index=False)
+    result_df.to_csv("results/output2/stitch_target_raw.csv", index=False)

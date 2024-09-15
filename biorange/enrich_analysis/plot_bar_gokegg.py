@@ -110,3 +110,17 @@ def kegg_bar_plot(
     )
 
     return p
+
+
+if __name__ == "__main__":
+    df = pd.DataFrame(
+        {
+            "Gene_set": ["BP", "CC", "MF"] * 5,
+            "Description": [f"Term_{i}" for i in range(15)],
+            "Count": np.random.randint(10, 100, 15),
+            "P-value": np.random.uniform(0.001, 0.05, 15),
+        }
+    )
+    # 调用函数并显示图形
+    p = go_bar_plot(df)
+    p.save(f"go_bar_plot.png", dpi=300)

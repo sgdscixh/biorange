@@ -59,14 +59,16 @@ def save_interaction_data(nodes, output_dir):
 def plot_ppi_network(nodes, output_dir):
     G = nx.from_pandas_edgelist(nodes, "preferredName_A", "preferredName_B")
     plt.figure(figsize=(6, 6))
-    pos = nx.spring_layout(G)
+    pos = nx.kamada_kawai_layout(
+        G
+    )  # 布局可选kamada_kawai_layout, spring_layout, spectral_layout, circular_layout, shell_layout, random_layout, planar_layout, planar_layout, radial_layout, spectral_layout, shell_layout, spectral_layout, spectral_layout, spectral_layout, spectral_layout, spectral_layout, spectral_layout, spectral_layout, spectral_layout, spectral_layout, spectral_layout, spectral_layout, spectral_layout, spectral_layout, spectral_layout, spectral_layout, spectral_layout, spectral_layout, spectral_layout, spectral_layout, spectral_layout, spectral_layout, spectral_layout, spectral_layout, spectral_layout, spectral_layout, spectral_layout, spectral_layout, spectral_layout, spectral_layout, spectral_layout, spectral_layout, spectral_layout, spectral_layout, spectral_layout, spectral_layout, spectral_layout, spectral_layout, spectral_layout, spectral_layout, spectral_layout, spectral_layout, spectral_layout, spectral_layout, spectral_layout, spectral_layout, spectral_layout, spectral_layout, spectral_layout, spectral_layout, spectral_layout, spectral_layout, spectral_layout
     nx.draw(
         G,
         pos,
         with_labels=True,
-        node_size=3000,
+        node_size=2000,
         node_color="skyblue",
-        font_size=10,
+        font_size=8,
         font_weight="bold",
         edge_color="gray",
     )
@@ -103,7 +105,7 @@ def plot_core_targets(degree_df, nodes, output_dir):
         node
         for node, degree in sorted(
             degree_dict.items(), key=lambda x: x[1], reverse=True
-        )[:274]
+        )[:100]
     ]
     subgraph = G.subgraph(top_nodes)
 
@@ -166,9 +168,9 @@ def plot_core_targets(degree_df, nodes, output_dir):
     for node, (x, y) in pos.items():
         plt.text(x, y, s=node, fontsize=font_sizes[node], ha="center", va="center")
 
-    plt.title("PPI network top 274")
-    plt.savefig(os.path.join(output_dir, "PPI_network_top274.pdf"))
-    plt.savefig(os.path.join(output_dir, "PPI_network_top274.png"))
+    plt.title("PPI network top 100")
+    plt.savefig(os.path.join(output_dir, "PPI_network_top100.pdf"))
+    plt.savefig(os.path.join(output_dir, "PPI_network_top100.png"))
     plt.show()
 
 
@@ -203,9 +205,7 @@ def main(gene_names_file, output_dir):
 
 if __name__ == "__main__":
     # 输入示例
-    gene_names_file = (
-        "/home/liuyan/projects/package/biorange/biorange/venn/intersection.txt"
-    )
+    gene_names_file = "/home/liuyan/projects/package/biorange/biorange/data/drug_disease_intersection.csv"
     output_dir = "./results/output2/ppi"
     os.makedirs(output_dir, exist_ok=True)
     main(gene_names_file, output_dir)
