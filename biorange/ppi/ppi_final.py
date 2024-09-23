@@ -45,37 +45,32 @@ def parse_interaction_data(data):
 
 
 def save_interaction_data(nodes, output_dir):
-    os.makedirs(output_dir, exist_ok=True)
     output_csv_path = os.path.join(output_dir, "protein_interactions.csv")
-    try:
-        nodes.to_csv(output_csv_path, index=False, header=["node1", "node2"])
-        print(f"Protein-protein interactions have been saved to {output_csv_path}")
-        return output_csv_path
-    except PermissionError:
-        print(f"Permission denied: Unable to save file to {output_csv_path}")
-        return None
+    nodes.to_csv(output_csv_path, index=False, header=["node1", "node2"])
+    return output_csv_path
 
 
-def plot_ppi_network(nodes, output_dir):
+def plot_ppi_network(nodes, output_dir, edge_width=0.1, dpi=900):
     G = nx.from_pandas_edgelist(nodes, "preferredName_A", "preferredName_B")
-    plt.figure(figsize=(6, 6))
-    pos = nx.spring_layout(G)
+    plt.figure(figsize=(10, 10))
+    pos = nx.kamada_kawai_layout(G)
     nx.draw(
         G,
         pos,
         with_labels=True,
-        node_size=3000,
-        node_color="skyblue",
-        font_size=10,
-        font_weight="bold",
+        node_size=30,
+        node_color="#4562E0",
+        font_size=9,
         edge_color="gray",
+        width=edge_width,
     )
     plt.title("Protein-Protein Interaction Network")
-    plt.savefig(os.path.join(output_dir, "ppi_network.png"))
+    png_path = os.path.join(output_dir, "ppi_network.png")
+    pdf_path = os.path.join(output_dir, "ppi_network.pdf")
+    plt.savefig(png_path, dpi=dpi)
+    plt.savefig(pdf_path)
     plt.show()
-    print(
-        f"PPI network graph has been saved to {os.path.join(output_dir, 'ppi_network.png')}"
-    )
+    return png_path, pdf_path
 
 
 def calculate_node_degrees(nodes, output_dir):
@@ -86,7 +81,7 @@ def calculate_node_degrees(nodes, output_dir):
     df_sorted = df.sort_values(by="degree", ascending=False)
     degree_csv_path = os.path.join(output_dir, "string_node_degree.csv")
     df_sorted.to_csv(degree_csv_path, index=False)
-    return df_sorted
+    return df_sorted, degree_csv_path
 
 
 def plot_core_targets(degree_df, nodes, output_dir):
@@ -166,16 +161,16 @@ def plot_core_targets(degree_df, nodes, output_dir):
     for node, (x, y) in pos.items():
         plt.text(x, y, s=node, fontsize=font_sizes[node], ha="center", va="center")
 
-    plt.title("PPI network top 274")
-    plt.savefig(os.path.join(output_dir, "PPI_network_top274.pdf"))
-    plt.savefig(os.path.join(output_dir, "PPI_network_top274.png"))
+    plt.title("PPI network top 100")
+    pdf_path = os.path.join(output_dir, "PPI_network_top100.pdf")
+    png_path = os.path.join(output_dir, "PPI_network_top100.png")
+    plt.savefig(pdf_path)
+    plt.savefig(png_path)
     plt.show()
+    return png_path, pdf_path
 
 
-def main(gene_names_file, output_dir):
-    # 读取基因名列表
-    gene_names = pd.read_csv(gene_names_file)["shared_targets"]
-
+def main(gene_names, output_dir):
     # 获取PPI数据
     data = fetch_ppi_data(gene_names)
     if data is None:
@@ -192,20 +187,30 @@ def main(gene_names_file, output_dir):
         return
 
     # 绘制PPI网络图
-    plot_ppi_network(nodes, output_dir)
+    ppi_png_path, ppi_pdf_path = plot_ppi_network(nodes, output_dir)
 
     # 计算节点度数并保存
-    degree_df = calculate_node_degrees(nodes, output_dir)
+    degree_df, degree_csv_path = calculate_node_degrees(nodes, output_dir)
 
     # 绘制核心靶点图
-    plot_core_targets(degree_df, nodes, output_dir)
+    core_png_path, core_pdf_path = plot_core_targets(degree_df, nodes, output_dir)
+
+    return {
+        "interaction_csv": interaction_csv_path,
+        "ppi_network_png": ppi_png_path,
+        "ppi_network_pdf": ppi_pdf_path,
+        "degree_csv": degree_csv_path,
+        "core_targets_png": core_png_path,
+        "core_targets_pdf": core_pdf_path,
+    }
 
 
 if __name__ == "__main__":
     # 输入示例
-    gene_names_file = (
-        "/home/liuyan/projects/package/biorange/biorange/venn/intersection.txt"
-    )
-    output_dir = "./results/output2/ppi"
+    gene_names_file = "biorange/data/shared targets of drugs and diseases.csv"
+    gene_names = pd.read_csv(gene_names_file)["shared_targets"]
+
+    output_dir = "./results/output2/ppi4444"
     os.makedirs(output_dir, exist_ok=True)
-    main(gene_names_file, output_dir)
+    results = main(gene_names, output_dir)
+    print(results)

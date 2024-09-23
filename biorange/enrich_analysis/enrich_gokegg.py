@@ -99,7 +99,7 @@ if __name__ == "__main__":
     # print("\nGO富集分析结果:")
     # print(go_results.head(10))
 
-    # # 仅执行KEGG分析
+    # # 仅执行KEGG分析 默认就是分析go+kegg
     # kegg_results = perform_enrichment_analysis(gene_list, analysis_type="kegg")
     # print("\nKEGG富集分析结果:")
     # print(kegg_results.head(10))

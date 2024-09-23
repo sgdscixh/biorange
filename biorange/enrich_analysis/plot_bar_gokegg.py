@@ -110,3 +110,55 @@ def kegg_bar_plot(
     )
 
     return p
+
+
+if __name__ == "__main__":
+    # 示例数据
+    go_data = pd.DataFrame(
+        {
+            "Gene_set": ["BP", "BP", "BP", "CC", "CC", "CC", "MF", "MF", "MF"],
+            "Description": [
+                "GO:0008150",
+                "GO:0009987",
+                "GO:0005488",
+                "GO:0005575",
+                "GO:0005623",
+                "GO:0005737",
+                "GO:0003674",
+                "GO:0003824",
+                "GO:0005198",
+            ],
+            "Count": [20, 15, 10, 25, 20, 15, 30, 25, 20],
+            "P-value": [
+                0.001,
+                0.002,
+                0.003,
+                0.0005,
+                0.0015,
+                0.0025,
+                0.0001,
+                0.0002,
+                0.0003,
+            ],
+        }
+    )
+
+    kegg_data = pd.DataFrame(
+        {
+            "Term": ["Pathway1", "Pathway2", "Pathway3", "Pathway4", "Pathway5"],
+            "Overlap": ["5/100", "10/100", "15/100", "20/100", "25/100"],
+            "P-value": [0.01, 0.02, 0.03, 0.04, 0.05],
+        }
+    )
+
+    # 调用 go_bar_plot 函数
+    go_plot = go_bar_plot(go_data)
+    go_plot.save("./go_plot.png")
+
+    # 调用 kegg_bar_plot 函数
+    kegg_plot = kegg_bar_plot(kegg_data)
+    kegg_plot.save("./kegg_plot.png")
+
+    # 显示图形
+    go_plot.show()
+    kegg_plot.show()
