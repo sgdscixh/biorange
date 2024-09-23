@@ -1,12 +1,12 @@
-import logging
 import os
 import subprocess
 from pathlib import Path
 from biorange.utils.package_fileload import get_data_file_path
 
-logging.basicConfig(
-    level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
-)
+
+from biorange.logger import get_logger
+
+logger = get_logger(__name__)
 
 
 class DiffDockRunner:
@@ -44,19 +44,20 @@ class DiffDockRunner:
             protein_path, ligand_path, config_path, samples_per_complex, output_dir
         )
         # 修改容器外部的权限
-        os.makedirs(f"{output_dir}/complex_0", exist_ok=True)
+        logger.info("本分析在容器中进行，重新运行需要清空文件夹")
+        os.makedirs(f"{output_dir}/complex_0")
         subprocess.run(["chmod", "-R", "777", output_dir], check=True)
 
         try:
-            logging.info("Starting DiffDock inference...")
+            logger.info("Starting DiffDock inference...")
             result = subprocess.run(
                 docker_cmd, check=True, text=True, capture_output=True
             )
-            logging.info("DiffDock inference completed successfully.")
-            logging.info(result.stdout)
+            logger.info("DiffDock inference completed successfully.")
+            logger.info(result.stdout)
         except subprocess.CalledProcessError as e:
-            logging.error(f"Docker command failed: {e}")
-            logging.error(f"Error output: {e.stderr}")
+            logger.error(f"Docker command failed: {e}")
+            logger.error(f"Error output: {e.stderr}")
             raise
 
     def _validate_inputs(
@@ -114,7 +115,7 @@ class DiffDockRunner:
             ),
         ]
 
-        logging.info(f"Docker command: {' '.join(docker_cmd)}")
+        logger.info(f"Docker command: {' '.join(docker_cmd)}")
         return docker_cmd
 
 
