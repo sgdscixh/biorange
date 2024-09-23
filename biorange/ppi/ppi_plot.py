@@ -110,6 +110,7 @@ def draw_concentric_layout(
     output_file="output",
     output_dir="./results/output/type",
     figsize=(12, 12),
+    dpi=900,
 ):
 
     G = nx.Graph()
@@ -119,8 +120,8 @@ def draw_concentric_layout(
     type_dict = types_df.set_index("node")["type"].to_dict()
     nx.set_node_attributes(G, type_dict, "type")
 
-    type_color = {"counpounds": "#F50E0E", "target": "#F5770E", "pathway": "#F5A20E"}
-    type_shape = {"counpounds": "d", "target": "o", "pathway": "*"}
+    type_color = {"counpounds": "#FEBA2C", "target": "#DA5A6A", "pathway": "#8A09A5"}
+    type_shape = {"counpounds": "s", "target": "o", "pathway": "*"}
 
     node_types = {
         t: [n for n, d in G.nodes(data=True) if d["type"] == t] for t in type_color
@@ -151,8 +152,8 @@ def draw_concentric_layout(
 
     plt.figure(figsize=figsize)
 
-    node_sizes = {"counpounds": 200, "target": 300, "pathway": 200}
-    font_sizes = {"counpounds": 10, "target": 8, "pathway": 10}
+    node_sizes = {"counpounds": 200, "target": 490, "pathway": 700}
+    font_sizes = {"counpounds": 8, "target": 7, "pathway": 10}
 
     for node_type, nodes in node_types.items():
         nx.draw_networkx_nodes(
@@ -176,7 +177,7 @@ def draw_concentric_layout(
         os.makedirs(output_dir)
 
     plt.savefig(os.path.join(output_dir, f"{output_file}.pdf"))
-    plt.savefig(os.path.join(output_dir, f"{output_file}.png"))
+    plt.savefig(os.path.join(output_dir, f"{output_file}.png"), dpi=dpi)
     plt.show()
 
 
@@ -209,8 +210,8 @@ if __name__ == "__main__":
     )
 
     # 使用同心圆布局
-    target_layers = [12, 18, 21, 29, 50]  # 每层的节点数量
-    layer_radii = [0.1, 0.4, 0.55, 0.7, 0.85, 1, 1.6]
+    target_layers = [15, 23, 35, 57]  # 每层的节点数量
+    layer_radii = [0.13, 0.35, 0.48, 0.63, 0.78, 1.3]
 
     nodes_df = pd.read_csv(nodes_df_concentric)
     types_df = pd.read_csv(type_df_concentric)

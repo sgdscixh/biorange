@@ -27,9 +27,11 @@ def plot_kegg(enr_KEGG, output_dir):
 
     # 绘制柱状图
     barplot_fig = barplot(
-        enr_KEGG.res2d, title="KEGG_2021_Human", figsize=(4, 5), color="darkred"
+        enr_KEGG.res2d, title="KEGG_2021_Human", figsize=(6, 7), color="darkred"
     )
-    barplot_fig.figure.savefig(os.path.join(output_dir, "KEGG_barplot.png"))
+    barplot_fig.figure.savefig(
+        os.path.join(output_dir, "KEGG_barplot.png"), bbox_inches="tight"
+    )
 
     # 绘制点图
     dotplot_fig = dotplot(
@@ -37,9 +39,11 @@ def plot_kegg(enr_KEGG, output_dir):
         title="KEGG_2021_Human",
         cmap="viridis_r",
         size=10,
-        figsize=(3, 5),
+        figsize=(6, 7),
     )
-    dotplot_fig.figure.savefig(os.path.join(output_dir, "KEGG_dotplot.png"))
+    dotplot_fig.figure.savefig(
+        os.path.join(output_dir, "KEGG_dotplot.png"), bbox_inches="tight"
+    )
 
 
 def go_enrichment_analysis(gene_list, output_dir):
@@ -67,7 +71,7 @@ def plot_go(enr_GO, output_dir):
     """
     os.makedirs(output_dir, exist_ok=True)
 
-    # 绘制柱状图
+    # 绘制柱状图，交换横纵坐标
     barplot_fig = barplot(
         enr_GO.results,
         column="Adjusted P-value",
@@ -75,10 +79,13 @@ def plot_go(enr_GO, output_dir):
         group="Gene_set",
         size=10,
         top_term=5,
-        figsize=(5, 5),
+        figsize=(7, 5),
         color=["darkred", "darkblue", "green"],
+        orientation="horizontal",  # 设置为水平柱状图
     )
-    barplot_fig.figure.savefig(os.path.join(output_dir, "GO_barplot.png"))
+    barplot_fig.figure.savefig(
+        os.path.join(output_dir, "GO_barplot.png"), bbox_inches="tight"
+    )
 
     # 绘制点图
     dotplot_fig = dotplot(
@@ -88,13 +95,15 @@ def plot_go(enr_GO, output_dir):
         cutoff=1,
         size=10,
         top_term=5,
-        figsize=(5, 5),
+        figsize=(7, 5),
         title="GO",
         xticklabels_rot=45,
         show_ring=False,
         marker="o",
     )
-    dotplot_fig.figure.savefig(os.path.join(output_dir, "GO_dotplot.png"))
+    dotplot_fig.figure.savefig(
+        os.path.join(output_dir, "GO_dotplot.png"), bbox_inches="tight"
+    )
 
 
 # 示例数据

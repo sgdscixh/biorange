@@ -1,236 +1,236 @@
-﻿node1,node2
-A,MYC
-A,CTNNB1
-A,ESR1
-A,PTEN
-A,TP53
-A,AKT1
-A,EGFR
-A,GAPDH
-A,MYC
-A,CTNNB1
-A,ESR1
-A,PTEN
-A,STAT3
-A,JUN
-A,IL6
-A,TNF
-A,HIF1A
-A,INS
-A,BCL2
-A,CCND1
-A,SRC
-A,CASP3
-A,ERBB2
-A,KRAS
-A,MAPK3
-A,CDH1
-A,EGF
-A,NFKB1
-A,IL1B
-B,MMP9
-B,HSP90AA1
-B,FN1
-B,CDKN2A
-B,TGFB1
-B,CD44
-B,PARP1
-B,GSK3B
-B,FOS
-B,ATM
-B,PPARG
-B,IGF1
-B,EP300
-B,AR
-B,MTOR
-B,BRCA1
-B,NOTCH1
-B,MDM2
-B,FGF2
-B,SMAD4
-B,CDKN1A
-B,PIK3CA
-B,IGF1R
-B,SOX2
-B,PTGS2
-B,EZH2
-B,SMAD3
-B,SIRT1
-B,ANXA5
-B,BRAF
-B,RHOA
-B,CXCL8
-B,SMAD2
-B,JAK2
-C,STAT1
-C,IL10
-C,CXCR4
-C,KDR
-C,CDK4
-C,HSPA4
-C,CREB1
-C,MAPK1
-C,MMP2
-C,SNAI1
-C,BCL2L1
-C,TLR4
-C,HDAC1
-C,ICAM1
-C,HRAS
-C,CCL2
-C,KIT
-C,FOXO1
-C,RELA
-C,PIK3R1
-C,CDH2
-C,CDK2
-D,NFKBIA
-D,CAV1
-D,MAPK8
-D,PDGFRB
-D,TERT
-D,CYCS
-D,CXCL12
-D,CDK1
-D,ITGB1
-D,FOXO3
-D,IL1A
-D,NRAS
-D,HGF
-D,CD274
-D,MCL1
-D,PGR
-D,IL2
-D,CASP8
-D,SPP1
-D,POU5F1
-D,RUNX2
-D,MET
-D,BRCA2
-D,E2F1
-D,FGF7
-D,CREBBP
-D,IL4
-D,PDGFRA
-D,MAP2K1
-D,CASP9
-D,GRB2
-httt11001,BCL2
-httt11001,CCND1
-httt11001,SRC
-httt11001,CASP3
-httt11001,ERBB2
-httt11001,KRAS
-httt11001,MAPK3
-httt11001,CDH1
-httt11001,EGF
-httt11001,NFKB1
-httt11002,IL1B
-httt11002,MMP9
-httt11002,HSP90AA1
-httt11002,FN1
-httt11002,CDKN2A
-httt11002,TGFB1
-httt11002,CD44
-httt11002,PARP1
-httt11002,GSK3B
-httt11002,FOS
-httt11002,ATM
-httt11002,PPARG
-httt11002,BCL2L1
-httt11002,TLR4
-httt11002,HDAC1
-httt11002,ICAM1
-httt11002,HRAS
-httt11002,CCL2
-httt11002,MAPK3
-httt11003,CDH1
-httt11003,EGF
-httt11003,NFKB1
-httt11003,IL1B
-httt11003,MMP9
-httt11003,HSP90AA1
-httt11003,MYC
-httt11003,CTNNB1
-httt11003,ESR1
-httt11003,PTEN
-httt11004,TP53
-httt11004,SPP1
-httt11004,POU5F1
-httt11004,RUNX2
-httt11004,MET
-httt11004,BRCA2
-httt11004,NOTCH1
-httt11004,MDM2
-httt11004,FGF2
-httt11004,SMAD4
-httt11004,CDKN1A
-httt11004,PIK3CA
-httt11004,IGF1R
-httt11004,GSK3B
-httt11005,FOS
-httt11005,ATM
-httt11005,PPARG
-httt11005,IGF1
-httt11005,EP300
-httt11005,AR
-httt11005,MTOR
-httt11005,CDH1
-httt11005,EGF
-httt11005,NFKB1
-httt11005,IL1B
-httt11005,MMP9
-httt11005,HSP90AA1
-httt11005,MYC
-httt11006,HDAC1
-httt11006,ICAM1
-httt11006,HRAS
-httt11006,CCL2
-httt11006,NFKBIA
-httt11006,CAV1
-httt11006,MAPK8
-httt11006,PDGFRB
-httt11007,NOTCH1
-httt11007,MDM2
-httt11007,FGF2
-httt11007,SMAD4
-httt11007,ERBB2
-httt11007,KRAS
-httt11007,MAPK3
-httt11007,CDH1
-httt11007,EGF
-httt11007,NFKB1
-httt11007,BRCA2
-httt11008,E2F1
-httt11008,FGF7
-httt11008,CREBBP
-httt11008,IL4
-httt11008,GAPDH
-httt11008,MYC
-httt11008,CTNNB1
-httt11008,ESR1
-httt11009,PTEN
-httt11009,FOXO1
-httt11009,RELA
-httt11009,PIK3R1
-httt11009,CDH2
-httt11009,CDK2
-httt11009,NFKBIA
-httt11009,CAV1
-httt11009,MAPK8
-httt11009,PDGFRB
-httt11009,TERT
-MYC,C
-MYC,D
-MYC,httt11001
-MYC,httt11002
+node1,node2
+Allose,MYC
+Allose,CTNNB1
+Allose,ESR1
+Allose,PTEN
+Allose,TP53
+Allose,AKT1
+Allose,EGFR
+Allose,GAPDH
+Allose,MYC
+Allose,CTNNB1
+Allose,ESR1
+Allose,PTEN
+Allose,STAT3
+Allose,JUN
+Allose,IL6
+Allose,TNF
+Allose,HIF1A
+Allose,INS
+Allose,BCL2
+Allose,CCND1
+Allose,SRC
+Allose,CASP3
+Allose,ERBB2
+Allose,KRAS
+Allose,MAPK3
+Allose,CDH1
+Allose,EGF
+Allose,NFKB1
+Allose,IL1B
+N-p-trans-Coumaroyltyramine,MMP9
+N-p-trans-Coumaroyltyramine,HSP90AA1
+N-p-trans-Coumaroyltyramine,FN1
+N-p-trans-Coumaroyltyramine,CDKN2A
+N-p-trans-Coumaroyltyramine,TGFB1
+N-p-trans-Coumaroyltyramine,CD44
+N-p-trans-Coumaroyltyramine,PARP1
+N-p-trans-Coumaroyltyramine,GSK3B
+N-p-trans-Coumaroyltyramine,FOS
+N-p-trans-Coumaroyltyramine,ATM
+N-p-trans-Coumaroyltyramine,PPARG
+N-p-trans-Coumaroyltyramine,IGF1
+N-p-trans-Coumaroyltyramine,EP300
+N-p-trans-Coumaroyltyramine,AR
+N-p-trans-Coumaroyltyramine,MTOR
+N-p-trans-Coumaroyltyramine,BRCA1
+N-p-trans-Coumaroyltyramine,NOTCH1
+N-p-trans-Coumaroyltyramine,MDM2
+N-p-trans-Coumaroyltyramine,FGF2
+N-p-trans-Coumaroyltyramine,SMAD4
+N-p-trans-Coumaroyltyramine,CDKN1A
+N-p-trans-Coumaroyltyramine,PIK3CA
+N-p-trans-Coumaroyltyramine,IGF1R
+N-p-trans-Coumaroyltyramine,SOX2
+N-p-trans-Coumaroyltyramine,PTGS2
+N-p-trans-Coumaroyltyramine,EZH2
+N-p-trans-Coumaroyltyramine,SMAD3
+N-p-trans-Coumaroyltyramine,SIRT1
+N-p-trans-Coumaroyltyramine,ANXA5
+N-p-trans-Coumaroyltyramine,BRAF
+N-p-trans-Coumaroyltyramine,RHOA
+N-p-trans-Coumaroyltyramine,CXCL8
+N-p-trans-Coumaroyltyramine,SMAD2
+N-p-trans-Coumaroyltyramine,JAK2
+Nicotinamide,STAT1
+Nicotinamide,IL10
+Nicotinamide,CXCR4
+Nicotinamide,KDR
+Nicotinamide,CDK4
+Nicotinamide,HSPA4
+Nicotinamide,CREB1
+Nicotinamide,MAPK1
+Nicotinamide,MMP2
+Nicotinamide,SNAI1
+Nicotinamide,BCL2L1
+Nicotinamide,TLR4
+Nicotinamide,HDAC1
+Nicotinamide,ICAM1
+Nicotinamide,HRAS
+Nicotinamide,CCL2
+Nicotinamide,KIT
+Nicotinamide,FOXO1
+Nicotinamide,RELA
+Nicotinamide,PIK3R1
+Nicotinamide,CDH2
+Nicotinamide,CDK2
+Cacticin,NFKBIA
+Cacticin,CAV1
+Cacticin,MAPK8
+Cacticin,PDGFRB
+Cacticin,TERT
+Cacticin,CYCS
+Cacticin,CXCL12
+Cacticin,CDK1
+Cacticin,ITGB1
+Cacticin,FOXO3
+Cacticin,IL1A
+Cacticin,NRAS
+Cacticin,HGF
+Cacticin,CD274
+Cacticin,MCL1
+Cacticin,PGR
+Cacticin,IL2
+Cacticin,CASP8
+Cacticin,SPP1
+Cacticin,POU5F1
+Cacticin,RUNX2
+Cacticin,MET
+Cacticin,BRCA2
+Cacticin,E2F1
+Cacticin,FGF7
+Cacticin,CREBBP
+Cacticin,IL4
+Cacticin,PDGFRA
+Cacticin,MAP2K1
+Cacticin,CASP9
+Cacticin,GRB2
+Kaposi sarcoma-associated herpesvirus infection,BCL2
+Kaposi sarcoma-associated herpesvirus infection,CCND1
+Kaposi sarcoma-associated herpesvirus infection,SRC
+Kaposi sarcoma-associated herpesvirus infection,CASP3
+Kaposi sarcoma-associated herpesvirus infection,ERBB2
+Kaposi sarcoma-associated herpesvirus infection,KRAS
+Kaposi sarcoma-associated herpesvirus infection,MAPK3
+Kaposi sarcoma-associated herpesvirus infection,CDH1
+Kaposi sarcoma-associated herpesvirus infection,EGF
+Kaposi sarcoma-associated herpesvirus infection,NFKB1
+TNF signaling pathway,IL1B
+TNF signaling pathway,MMP9
+TNF signaling pathway,HSP90AA1
+TNF signaling pathway,FN1
+TNF signaling pathway,CDKN2A
+TNF signaling pathway,TGFB1
+TNF signaling pathway,CD44
+TNF signaling pathway,PARP1
+TNF signaling pathway,GSK3B
+TNF signaling pathway,FOS
+TNF signaling pathway,ATM
+TNF signaling pathway,PPARG
+TNF signaling pathway,BCL2L1
+TNF signaling pathway,TLR4
+TNF signaling pathway,HDAC1
+TNF signaling pathway,ICAM1
+TNF signaling pathway,HRAS
+TNF signaling pathway,CCL2
+TNF signaling pathway,MAPK3
+Lipid and atherosclerosis,CDH1
+Lipid and atherosclerosis,EGF
+Lipid and atherosclerosis,NFKB1
+Lipid and atherosclerosis,IL1B
+Lipid and atherosclerosis,MMP9
+Lipid and atherosclerosis,HSP90AA1
+Lipid and atherosclerosis,MYC
+Lipid and atherosclerosis,CTNNB1
+Lipid and atherosclerosis,ESR1
+Lipid and atherosclerosis,PTEN
+Lipid and atherosclerosis,TP53
+Hepatitis B,SPP1
+Hepatitis B,POU5F1
+Hepatitis B,RUNX2
+Hepatitis B,MET
+Hepatitis B,BRCA2
+Hepatitis B,NOTCH1
+Hepatitis B,MDM2
+Hepatitis B,FGF2
+Hepatitis B,SMAD4
+Hepatitis B,CDKN1A
+Hepatitis B,PIK3CA
+Hepatitis B,IGF1R
+Hepatitis B,GSK3B
+Human cytomegalovirus infection,FOS
+Human cytomegalovirus infection,ATM
+Human cytomegalovirus infection,PPARG
+Human cytomegalovirus infection,IGF1
+Human cytomegalovirus infection,EP300
+Human cytomegalovirus infection,AR
+Human cytomegalovirus infection,MTOR
+Human cytomegalovirus infection,CDH1
+Human cytomegalovirus infection,EGF
+Human cytomegalovirus infection,NFKB1
+Pathways in cancer,IL1B
+Pathways in cancer,MMP9
+Pathways in cancer,HSP90AA1
+Pathways in cancer,MYC
+Pathways in cancer,HDAC1
+Pathways in cancer,ICAM1
+Pathways in cancer,HRAS
+Pathways in cancer,CCL2
+Pathways in cancer,NFKBIA
+Pathways in cancer,CAV1
+Pathways in cancer,MAPK8
+Pathways in cancer,PDGFRB
+PI3K-Akt signaling pathway,NOTCH1
+PI3K-Akt signaling pathway,MDM2
+PI3K-Akt signaling pathway,FGF2
+PI3K-Akt signaling pathway,SMAD4
+PI3K-Akt signaling pathway,ERBB2
+PI3K-Akt signaling pathway,KRAS
+PI3K-Akt signaling pathway,MAPK3
+PI3K-Akt signaling pathway,CDH1
+PI3K-Akt signaling pathway,EGF
+PI3K-Akt signaling pathway,NFKB1
+PI3K-Akt signaling pathway,BRCA2
+Pertussis,E2F1
+Pertussis,FGF7
+Pertussis,CREBBP
+Pertussis,IL4
+Pertussis,GAPDH
+Pertussis,MYC
+Pertussis,CTNNB1
+Pertussis,ESR1
+IL-17 signaling pathway,PTEN
+IL-17 signaling pathway,FOXO1
+IL-17 signaling pathway,RELA
+IL-17 signaling pathway,PIK3R1
+IL-17 signaling pathway,CDH2
+IL-17 signaling pathway,CDK2
+IL-17 signaling pathway,NFKBIA
+IL-17 signaling pathway,CAV1
+IL-17 signaling pathway,MAPK8
+IL-17 signaling pathway,PDGFRB
+IL-17 signaling pathway,TERT
+MYC,Nicotinamide
+MYC,Cacticin
+MYC,Kaposi sarcoma-associated herpesvirus infection
+MYC,TNF signaling pathway
 MYC,NFKBIA
 MYC,CAV1
-PTEN,A
-PTEN,B
-PTEN,httt11004
-PTEN,httt11005
-PTEN,httt11006
+PTEN,Allose
+PTEN,N-p-trans-Coumaroyltyramine
+PTEN,Nicotinamide
+PTEN,Cacticin
+PTEN,Pathways in cancer
 PTEN,FGF2
 PTEN,SMAD4
 PTEN,ERBB2
@@ -246,24 +246,24 @@ ESR1,SMAD4
 ESR1,CDKN1A
 ESR1,PIK3CA
 ESR1,IGF1R
-ESR1,httt11003
-ESR1,httt11004
-ESR1,httt11005
-ESR1,A
-ESR1,B
-ESR1,C
+ESR1,PI3K-Akt signaling pathway
+ESR1,Pertussis
+ESR1,Human cytomegalovirus infection
+ESR1,Allose
+ESR1,N-p-trans-Coumaroyltyramine
+ESR1,Nicotinamide
 IL1B,HDAC1
 IL1B,ICAM1
 IL1B,HRAS
 IL1B,CCL2
 IL1B,KIT
 IL1B,FOXO1
-IL1B,A
-IL1B,B
-IL1B,C
-IL1B,httt11003
-IL1B,httt11004
-IL1B,httt11005
+IL1B,Allose
+IL1B,N-p-trans-Coumaroyltyramine
+IL1B,Nicotinamide
+IL1B,Lipid and atherosclerosis
+IL1B,Hepatitis B
+IL1B,Pathways in cancer
 IL1B,PPARG
 IL1B,IGF1
 IL1B,EP300
@@ -282,17 +282,17 @@ PIK3CA,MDM2
 PIK3CA,FGF2
 PIK3CA,SMAD4
 PIK3CA,ERBB2
-PIK3CA,httt11006
-PIK3CA,httt11007
-PIK3CA,httt11008
-PIK3CA,httt11009
+PIK3CA,IL-17 signaling pathway
+PIK3CA,Chagas disease
+PIK3CA,PI3K-Akt signaling pathway
+PIK3CA,Pertussis
 PIK3CA,NFKB1
-PIK3CA,A
-PIK3CA,D
-PTEN,D
-PTEN,httt11001
-PTEN,httt11002
-PTEN,httt11003
+PIK3CA,Allose
+PIK3CA,Cacticin
+PTEN,Cacticin
+PTEN,Kaposi sarcoma-associated herpesvirus infection
+PTEN,Hepatitis B
+PTEN,Chagas disease
 PTEN,KIT
 PTEN,FOXO1
 PTEN,RELA
@@ -307,16 +307,16 @@ PTEN,TERT
 PTEN,CYCS
 PTEN,CXCL12
 PTEN,CDK1
-STAT3,httt11002
-STAT3,httt11003
+STAT3,PI3K-Akt signaling pathway
+STAT3,Pertussis
 STAT3,FGF2
 STAT3,SMAD4
 STAT3,CDKN1A
 STAT3,PIK3CA
 STAT3,IGF1R
-STAT3,C
+STAT3,Nicotinamide
 STAT3,FOS
-STAT3,A
+STAT3,Allose
 STAT3,PPARG
 ATM,PTEN
 ATM,FOXO1
@@ -328,10 +328,10 @@ ATM,NFKBIA
 ATM,CAV1
 ATM,MAPK8
 ATM,PDGFRB
-ATM,A
-ATM,C
-ATM,httt11001
-ATM,httt11002
+ATM,Allose
+ATM,Nicotinamide
+ATM,Kaposi sarcoma-associated herpesvirus infection
+ATM,IL-17 signaling pathway
 ATM,IL10
 ATM,CXCR4
 NFKBIA,KDR
