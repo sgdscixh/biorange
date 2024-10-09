@@ -10,15 +10,18 @@ def create_custom_layout(node_types, num_rows, num_cols):
     y_offsets = {t: -len(node_types[t]) / 2 for t in node_types}
 
     for i, node in enumerate(node_types["pathway"]):
-        pos[node] = (-1.6, i + y_offsets["pathway"])
+        pos[node] = (
+            -1.2,
+            i + y_offsets["pathway"],
+        )  # 调节括号里的常数，可以调整pathway节点的位置，数值越小，越向右移
 
     for i, node in enumerate(node_types["target"]):
         x = (i % num_cols) * 0.08 - (num_cols * 0.2) / 2
-        y = (i // num_cols) * 0.35 + y_offsets["target"]
+        y = (i // num_cols) * 0.6 + y_offsets["target"]
         pos[node] = (x, y)
 
-    for i, node in enumerate(node_types["counpounds"]):
-        pos[node] = (0.3, i + y_offsets["counpounds"])
+    for i, node in enumerate(node_types["counpound"]):
+        pos[node] = (0.3, i + y_offsets["counpound"])
 
     centers = {
         t: sum(pos[n][1] for n in node_types[t]) / len(node_types[t])
@@ -62,8 +65,8 @@ def draw_custom_layout(
     type_dict = types_df.set_index("node")["type"].to_dict()
     nx.set_node_attributes(G, type_dict, "type")
 
-    type_color = {"counpounds": "#0D71BF", "target": "#2BB11E", "pathway": "#F56327"}
-    type_shape = {"counpounds": "d", "target": "o", "pathway": "*"}
+    type_color = {"counpound": "#0D71BF", "target": "#2BB11E", "pathway": "#F56327"}
+    type_shape = {"counpound": "d", "target": "o", "pathway": "*"}
 
     node_types = {
         t: [n for n, d in G.nodes(data=True) if d["type"] == t] for t in type_color
@@ -73,8 +76,8 @@ def draw_custom_layout(
 
     plt.figure(figsize=figsize)
 
-    node_sizes = {"counpounds": 200, "target": 300, "pathway": 200}
-    font_sizes = {"counpounds": 10, "target": 6, "pathway": 10}
+    node_sizes = {"counpound": 200, "target": 300, "pathway": 200}
+    font_sizes = {"counpound": 10, "target": 6, "pathway": 10}
 
     for node_type, nodes in node_types.items():
         nx.draw_networkx_nodes(
@@ -120,8 +123,8 @@ def draw_concentric_layout(
     type_dict = types_df.set_index("node")["type"].to_dict()
     nx.set_node_attributes(G, type_dict, "type")
 
-    type_color = {"counpounds": "#FEBA2C", "target": "#DA5A6A", "pathway": "#8A09A5"}
-    type_shape = {"counpounds": "s", "target": "o", "pathway": "*"}
+    type_color = {"counpound": "#FEBA2C", "target": "#DA5A6A", "pathway": "#8A09A5"}
+    type_shape = {"counpound": "s", "target": "o", "pathway": "*"}
 
     node_types = {
         t: [n for n, d in G.nodes(data=True) if d["type"] == t] for t in type_color
@@ -145,15 +148,15 @@ def draw_concentric_layout(
             for i in range(len(target_layers))
         ]
 
-    compounds_nodes = node_types["counpounds"]
+    compounds_nodes = node_types["counpound"]
     pathway_nodes = node_types["pathway"]
     layers = [compounds_nodes, *target_layers, pathway_nodes]
     pos = create_concentric_layout(G, layers, layer_radii)
 
     plt.figure(figsize=figsize)
 
-    node_sizes = {"counpounds": 200, "target": 490, "pathway": 700}
-    font_sizes = {"counpounds": 8, "target": 7, "pathway": 10}
+    node_sizes = {"counpound": 200, "target": 500, "pathway": 700}
+    font_sizes = {"counpound": 8, "target": 8, "pathway": 6}
 
     for node_type, nodes in node_types.items():
         nx.draw_networkx_nodes(
@@ -182,18 +185,10 @@ def draw_concentric_layout(
 
 
 if __name__ == "__main__":
-    nodes_df_custom = (
-        "/home/liuyan/projects/package/biorange/biorange/data/node_file333.csv"
-    )
-    type_df_custom = (
-        "/home/liuyan/projects/package/biorange/biorange/data/type_file.csv"
-    )
-    nodes_df_concentric = (
-        "/home/liuyan/projects/package/biorange/biorange/data/node_file333.csv"
-    )
-    type_df_concentric = (
-        "/home/liuyan/projects/package/biorange/biorange/data/type_file.csv"
-    )
+    nodes_df_custom = "/home/liuyan/projects/package/biorange/node_file33.csv"
+    type_df_custom = "/home/liuyan/projects/package/biorange/type_file33.csv"
+    nodes_df_concentric = "/home/liuyan/projects/package/biorange/node_file33.csv"
+    type_df_concentric = "/home/liuyan/projects/package/biorange/type_file33.csv"
 
     nodes_df = pd.read_csv(nodes_df_custom)
     types_df = pd.read_csv(type_df_custom)
@@ -210,8 +205,15 @@ if __name__ == "__main__":
     )
 
     # 使用同心圆布局
-    target_layers = [15, 23, 35, 57]  # 每层的节点数量
-    layer_radii = [0.13, 0.35, 0.48, 0.63, 0.78, 1.3]
+    target_layers = [15, 23, 35, 57]  # 每层的target节点数量
+    layer_radii = [
+        0.13,
+        0.35,
+        0.48,
+        0.63,
+        0.78,
+        1.3,
+    ]  # 层数为target节点层数+2（compounds节点和pathway节点）
 
     nodes_df = pd.read_csv(nodes_df_concentric)
     types_df = pd.read_csv(type_df_concentric)

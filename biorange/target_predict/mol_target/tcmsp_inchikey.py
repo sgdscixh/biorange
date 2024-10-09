@@ -55,7 +55,9 @@ if __name__ == "__main__":
     searcher = TCMSPTargetScraper()
 
     # 从CSV文件读取inchikeys
-    inchikeys_df = pd.read_csv("biorange/data/inchikey.csv")
+    inchikeys_df = pd.read_csv(
+        "/home/liuyan/projects/package/biorange/biorange/target_predict/input_data/admet_filtered_ingredients.csv"
+    )
     inchikeys_list = inchikeys_df["inchikey"].tolist()
 
     result = searcher.search_inchikeys(inchikeys_list)

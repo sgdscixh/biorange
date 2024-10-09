@@ -291,7 +291,7 @@ if __name__ == "__main__":
     client = ChEMBLTargetScraper()
     # 读取CSV文件中的SMILES列
     smiles_list = pd.read_csv(
-        "/home/liuyan/projects/package/biorange/biorange/data/smiles.csv"
+        "/home/liuyan/projects/package/biorange/biorange/target_predict/input_data/admet_filtered_ingredients.csv"
     )["smiles"].tolist()
 
     all_results = pd.DataFrame()
@@ -299,9 +299,7 @@ if __name__ == "__main__":
         df = client.search_smiles(smiles)
         all_results = pd.concat([all_results, df], ignore_index=True)
 
-    all_results.to_csv(
-        "./results/output2/moltarget/chembl_output_target.csv", index=False
-    )
+    all_results.to_csv("./results/output2/chembl.csv", index=False)
     client.all_predictions.to_csv(
-        "./results/output2/moltarget/chembl_all_predictions.csv", index=False
+        "./results/output2/chembl.csv", index=False
     )  # 保存所有预测结果

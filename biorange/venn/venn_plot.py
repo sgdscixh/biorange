@@ -113,7 +113,7 @@ vennplot = VennPlotter().plot_venn
 # Usage Example
 if __name__ == "__main__":
     # 示例数据
-    TCMSP = ["A", "B", "C", "D"]
+    TCMSP = ["A", "B", "C", "D", "D", "D"]
     Chembl = ["B", "C", "E", "F"]
     STITCH = ["C", "D", "E", "G"]
 

@@ -219,10 +219,13 @@ stich_inchikey_target = TCMDataProcessor().search
 # 使用示例
 if __name__ == "__main__":
     processor = TCMDataProcessor()
-    df = pd.read_csv("biorange/data/inchikey.csv")
+    df = pd.read_csv(
+        "/home/liuyan/projects/package/biorange/biorange/target_predict/input_data/admet_filtered_ingredients.csv"
+    )
     df_list = df["inchikey"].tolist()
     result_df = processor.search(
         inchikeys=df_list,
     )
+    result_df = result_df.drop_duplicates()  # 去除重复行
     print(result_df)
     # result_df.to_csv("results/output2/stitch_target_raw333.csv", index=False)

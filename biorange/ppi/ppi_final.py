@@ -162,8 +162,8 @@ def plot_core_targets(degree_df, nodes, output_dir):
         plt.text(x, y, s=node, fontsize=font_sizes[node], ha="center", va="center")
 
     plt.title("PPI network top 100")
-    pdf_path = os.path.join(output_dir, "PPI_network_top100.pdf")
-    png_path = os.path.join(output_dir, "PPI_network_top100.png")
+    pdf_path = os.path.join(output_dir, "PPI_network_degree.pdf")
+    png_path = os.path.join(output_dir, "PPI_network_degree.png")
     plt.savefig(pdf_path)
     plt.savefig(png_path)
     plt.show()
@@ -210,7 +210,9 @@ if __name__ == "__main__":
     gene_names_file = "biorange/data/shared targets of drugs and diseases.csv"
     gene_names = pd.read_csv(gene_names_file)["shared_targets"]
 
-    output_dir = "./results/output2/ppi4444"
+    output_dir = "./results/output2/ppi"
     os.makedirs(output_dir, exist_ok=True)
+
+    # 完整ppi
     results = main(gene_names, output_dir)
     print(results)
