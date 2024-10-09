@@ -1,4 +1,5 @@
 from biorange.dock.dock_run_diffdock import DiffDockRunner, diffdock_run
+from biorange.dock.dock_run_autodock import AutoDockRunner, autodock_run
 
 from biorange.dock.dock_plot import visualize_molecule_complex as plot3d
 
