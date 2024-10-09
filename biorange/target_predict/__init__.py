@@ -41,3 +41,5 @@ from biorange.target_predict.disease_target.genecards import (
     GenecardsDiseaseScraper,
     genecards_disease_target,
 )
+
+from biorange.target_predict.data_processing.ingredient_input import admet_filter
