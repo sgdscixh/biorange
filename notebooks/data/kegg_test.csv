@@ -1,0 +1,207 @@
+term,gene_name,P-value
+Kaposi sarcoma-associated herpesvirus infection,CDKN1A;IFNB1;FOS;PTGS2;FGF2;HIF1A;RELA;IKBKB;IL6;CREB1;CASP3;CALM2;TP53;TLR3,7.31E-16
+TNF signaling pathway,IKBKB;IL6;CEBPB;CREB1;IFNB1;CASP3;FOS;PTGS2;TNF;RELA,1.70E-12
+Lipid and atherosclerosis,SELP;IKBKB;IL6;NOS3;IFNB1;CASP3;FOS;CALM2;TP53;TNF;ATF6;RELA,2.36E-12
+Hepatitis B,IKBKB;IL6;CDKN1A;CREB1;IFNB1;CASP3;FOS;TP53;TNF;TLR3;RELA,2.49E-12
+Pathways in cancer,CDKN1A;NOS2;GSTP1;FOS;PTGS2;FGF2;HIF1A;IL2;RELA;IL4;IKBKB;IL6;RAD51;CASP3;CALM2;TP53,4.32E-12
+IL-17 signaling pathway,IL4;IKBKB;IL6;CEBPB;CASP3;FOS;PTGS2;TNF;RELA,1.25E-11
+Chagas disease,IL10;IKBKB;IL6;NOS2;IFNB1;FOS;TNF;IL2;RELA,2.64E-11
+PI3K-Akt signaling pathway,CDKN1A;BDNF;NOS3;IFNB1;NGF;FGF2;IL2;RELA;IL4;IKBKB;IL6;CREB1;TP53,5.11E-11
+Pertussis,IL10;IL6;NOS2;CASP3;FOS;CALM2;TNF;RELA,8.54E-11
+Human cytomegalovirus infection,IKBKB;IL6;CDKN1A;CREB1;IFNB1;CASP3;PTGS2;CALM2;TP53;TNF;RELA,8.78E-11
+Tuberculosis,IL10;IL6;CEBPB;CREB1;NOS2;IFNB1;CASP3;CALM2;TNF;RELA,1.95E-10
+Apoptosis,IKBKB;PARP1;CASP3;FOS;NGF;TP53;TNF;RELA;CTSB,5.23E-10
+C-type lectin receptor signaling pathway,IL10;IKBKB;IL6;PTGS2;CALM2;TNF;IL2;RELA,1.09E-09
+JAK-STAT signaling pathway,IL10;IL4;IL6;CDKN1A;IFNB1;LEP;LEPR;PTPN2;IL2,1.69E-09
+Adipocytokine signaling pathway,POMC;IKBKB;LEP;NPY;LEPR;TNF;RELA,1.80E-09
+Leishmaniasis,IL10;IL4;NOS2;FOS;PTGS2;TNF;RELA,3.94E-09
+Yersinia infection,IL10;IKBKB;IL6;IFNB1;FOS;TNF;IL2;RELA,9.77E-09
+Fluid shear stress and atherosclerosis,IKBKB;NOS3;GSTP1;FOS;CALM2;TP53;TNF;RELA,1.10E-08
+Measles,IKBKB;IL6;IFNB1;CASP3;FOS;TP53;IL2;RELA,1.10E-08
+Small cell lung cancer,IKBKB;CDKN1A;NOS2;CASP3;PTGS2;TP53;RELA,1.38E-08
+Pathways of neurodegeneration,IL6;NOS2;BDNF;CASP3;CAT;NOS1;PTGS2;CALM2;TNF;ATF6;RELA;SOD1,2.06E-08
+cAMP signaling pathway,POMC;GHSR;ADCYAP1;CREB1;BDNF;NPY;FOS;CALM2;RELA,2.09E-08
+Human T-cell leukemia virus 1 infection,IKBKB;IL6;CDKN1A;CREB1;FOS;TP53;TNF;IL2;RELA,2.35E-08
+Non-alcoholic fatty liver disease,IKBKB;IL6;LEP;CASP3;LEPR;FOS;TNF;RELA,2.57E-08
+Hepatitis C,IKBKB;CDKN1A;IFNB1;CASP3;TP53;TNF;TLR3;RELA,2.85E-08
+T cell receptor signaling pathway,IL10;IL4;IKBKB;FOS;TNF;IL2;RELA,3.26E-08
+Toll-like receptor signaling pathway,IKBKB;IL6;IFNB1;FOS;TNF;TLR3;RELA,3.26E-08
+Coronavirus disease,SELP;IKBKB;IL6;IFNB1;FOS;TNF;IL2;TLR3;RELA,3.87E-08
+Th17 cell differentiation,IL4;IKBKB;IL6;FOS;HIF1A;IL2;RELA,3.97E-08
+Inflammatory bowel disease,IL10;IL4;IL6;TNF;IL2;RELA,4.96E-08
+Human papillomavirus infection,IKBKB;CDKN1A;CREB1;IFNB1;CASP3;PTGS2;TP53;TNF;TLR3;RELA,6.75E-08
+Neuroactive ligand-receptor interaction,POMC;GHSR;ADCYAP1;CNR1;LEP;NPY;LEPR;OPRK1;OPRM1;NR3C1,8.91E-08
+Alzheimer disease,IKBKB;IL6;NOS2;CASP3;NOS1;PTGS2;CALM2;TNF;ATF6;RELA,1.85E-07
+Epstein-Barr virus infection,IKBKB;IL6;CDKN1A;IFNB1;CASP3;TP53;TNF;RELA,2.00E-07
+MAPK signaling pathway,IKBKB;BDNF;CASP3;FOS;NGF;TP53;TNF;FGF2;RELA,2.91E-07
+Cytokine-cytokine receptor interaction,IL10;IL4;IL6;IFNB1;LEP;LEPR;NGF;TNF;IL2,2.99E-07
+Cocaine addiction,CREB1;TH;MAOA;BDNF;RELA,4.17E-07
+Prostate cancer,IKBKB;CDKN1A;CREB1;GSTP1;TP53;RELA,5.50E-07
+AGE-RAGE signaling pathway in diabetic complications,IL6;NOS3;CASP3;TNF;F3;RELA,6.58E-07
+Amoebiasis,IL10;IL6;NOS2;CASP3;TNF;RELA,7.40E-07
+Influenza A,IKBKB;IL6;IFNB1;CASP3;TNF;TLR3;RELA,1.02E-06
+Insulin resistance,IKBKB;IL6;CREB1;NOS3;TNF;RELA,1.04E-06
+HIF-1 signaling pathway,IL6;CDKN1A;NOS2;NOS3;HIF1A;RELA,1.09E-06
+Toxoplasmosis,IL10;IKBKB;NOS2;CASP3;TNF;RELA,1.28E-06
+Neurotrophin signaling pathway,IKBKB;BDNF;NGF;CALM2;TP53;RELA,1.83E-06
+Amphetamine addiction,CREB1;TH;MAOA;FOS;CALM2,2.34E-06
+Osteoclast differentiation,IKBKB;CREB1;IFNB1;FOS;TNF;RELA,2.68E-06
+Relaxin signaling pathway,CREB1;NOS2;NOS3;FOS;NOS1;RELA,2.93E-06
+Dopaminergic synapse,CREB1;TH;MAOA;FOS;COMT;CALM2,3.35E-06
+Pancreatic cancer,IKBKB;CDKN1A;RAD51;TP53;RELA,3.79E-06
+Human immunodeficiency virus 1 infection,IKBKB;IFNB1;CASP3;FOS;CALM2;TNF;RELA,4.09E-06
+Estrogen signaling pathway,POMC;CREB1;NOS3;OPRM1;FOS;CALM2,4.15E-06
+Tyrosine metabolism,TH;MAOA;TYRP1;COMT,4.58E-06
+Allograft rejection,IL10;IL4;TNF;IL2,5.71E-06
+Th1 and Th2 cell differentiation,IL4;IKBKB;FOS;IL2;RELA,9.71E-06
+Circadian entrainment,ADCYAP1;CREB1;FOS;NOS1;CALM2,1.26E-05
+Intestinal immune network for IgA production,IL10;IL4;IL6;IL2,1.47E-05
+Amyotrophic lateral sclerosis,NOS2;CASP3;CAT;NOS1;TP53;TNF;ATF6;SOD1,1.60E-05
+Longevity regulating pathway,CREB1;CAT;TP53;RELA;SOD1,1.61E-05
+Arginine and proline metabolism,NOS2;MAOA;NOS3;NOS1,1.73E-05
+Malaria,IL10;SELP;IL6;TNF,1.73E-05
+NF-kappa B signaling pathway,IKBKB;PARP1;PTGS2;TNF;RELA,1.76E-05
+NOD-like receptor signaling pathway,IKBKB;IL6;IFNB1;TNF;RELA;CTSB,2.04E-05
+Alcoholism,CREB1;TH;BDNF;MAOA;NPY;CALM2,2.38E-05
+Transcriptional misregulation in cancer,IL6;CEBPB;CDKN1A;TP53;MPO;RELA,2.85E-05
+Legionellosis,IL6;CASP3;TNF;RELA,2.92E-05
+Pathogenic Escherichia coli infection,IKBKB;IL6;CASP3;FOS;TNF;RELA,3.29E-05
+Proteoglycans in cancer,CDKN1A;CASP3;TP53;TNF;FGF2;HIF1A,4.11E-05
+Arginine biosynthesis,NOS2;NOS3;NOS1,4.19E-05
+Cytosolic DNA-sensing pathway,IKBKB;IL6;IFNB1;RELA,4.35E-05
+FoxO signaling pathway,IL10;IKBKB;IL6;CDKN1A;CAT,5.36E-05
+Renin secretion,ADCYAP1;CREB1;CALM2;CTSB,6.22E-05
+RIG-I-like receptor signaling pathway,IKBKB;IFNB1;TNF;RELA,6.59E-05
+Ras signaling pathway,IKBKB;BDNF;NGF;CALM2;FGF2;RELA,8.16E-05
+Chronic myeloid leukemia,IKBKB;CDKN1A;TP53;RELA,9.09E-05
+Chemical carcinogenesis,CREB1;GSTP1;FOS;PTGS2;FGF2;RELA,9.61E-05
+Calcium signaling pathway,NOS2;NOS3;NOS1;NGF;CALM2;FGF2,9.83E-05
+Oxytocin signaling pathway,CDKN1A;NOS3;FOS;PTGS2;CALM2,1.15E-04
+Asthma,IL10;IL4;TNF,1.20E-04
+Parkinson disease,TH;MAOA;CASP3;CALM2;TP53;ATF6,1.20E-04
+Salmonella infection,IKBKB;IL6;CASP3;FOS;TNF;RELA,1.20E-04
+Peroxisome,NOS2;CAT;XDH;SOD1,1.22E-04
+Cellular senescence,IL6;CDKN1A;CALM2;TP53;RELA,1.22E-04
+Herpes simplex virus 1 infection,IKBKB;IL6;IFNB1;CASP3;TP53;TNF;TLR3;RELA,1.45E-04
+Colorectal cancer,CDKN1A;CASP3;FOS;TP53,1.47E-04
+PD-L1 expression and PD-1 checkpoint pathway in cancer,IKBKB;FOS;HIF1A;RELA,1.68E-04
+African trypanosomiasis,IL10;IL6;TNF,2.04E-04
+Viral protein interaction with cytokine and cytokine receptor,IL10;IL6;TNF;IL2,2.63E-04
+Melanogenesis,POMC;CREB1;TYRP1;CALM2,2.73E-04
+Graft-versus-host disease,IL6;TNF;IL2,2.99E-04
+Drug metabolism,MAOA;GSTP1;MPO;XDH,3.53E-04
+MicroRNAs in cancer,TRIM71;IKBKB;CDKN1A;CASP3;PTGS2;TP53,3.92E-04
+Viral carcinogenesis,CDKN1A;CREB1;CASP3;TP53;RELA,4.15E-04
+Serotonergic synapse,MAOA;CASP3;PTGS2;PTGS1,4.19E-04
+Sphingolipid signaling pathway,NOS3;TP53;TNF;RELA,5.09E-04
+Autoimmune thyroid disease,IL10;IL4;IL2,5.95E-04
+Regulation of lipolysis in adipocytes,NPY;PTGS2;PTGS1,6.63E-04
+Apelin signaling pathway,NOS2;NOS3;NOS1;CALM2,8.64E-04
+Shigellosis,IKBKB;IFNB1;TP53;TNF;RELA,9.88E-04
+Breast cancer,CDKN1A;FOS;TP53;FGF2,1.12E-03
+Acute myeloid leukemia,IKBKB;MPO;RELA,1.18E-03
+Mitophagy,TP53;HIF1A;RELA,1.23E-03
+Epithelial cell signaling in Helicobacter pylori infection,IKBKB;CASP3;RELA,1.34E-03
+Prolactin signaling pathway,TH;FOS;RELA,1.34E-03
+Melanoma,CDKN1A;TP53;FGF2,1.45E-03
+Necroptosis,PARP1;IFNB1;TNF;TLR3,1.50E-03
+p53 signaling pathway,CDKN1A;CASP3;TP53,1.51E-03
+Prion disease,IL6;CREB1;CASP3;TNF;SOD1,1.57E-03
+Glioma,CDKN1A;CALM2;TP53,1.63E-03
+Antigen processing and presentation,CREB1;TNF;CTSB,1.83E-03
+B cell receptor signaling pathway,IKBKB;FOS;RELA,2.04E-03
+Huntington disease,CREB1;BDNF;CASP3;TP53;SOD1,2.58E-03
+Rheumatoid arthritis,IL6;FOS;TNF,3.02E-03
+Aldosterone synthesis and secretion,POMC;CREB1;CALM2,3.50E-03
+Choline metabolism in cancer,SLC22A4;FOS;HIF1A,3.50E-03
+Hematopoietic cell lineage,IL4;IL6;TNF,3.60E-03
+Rap1 signaling pathway,CNR1;NGF;CALM2;FGF2,4.10E-03
+"Parathyroid hormone synthesis, secretion and action",CDKN1A;CREB1;FOS,4.36E-03
+Thyroid cancer,CDKN1A;TP53,5.87E-03
+"Growth hormone synthesis, secretion and action",GHSR;CREB1;FOS,6.02E-03
+AMPK signaling pathway,CREB1;LEP;LEPR,6.16E-03
+Bladder cancer,CDKN1A;TP53,7.17E-03
+Tryptophan metabolism,MAOA;CAT,7.52E-03
+Natural killer cell mediated cytotoxicity,IFNB1;CASP3;TNF,7.84E-03
+Type I diabetes mellitus,TNF;IL2,7.87E-03
+Type II diabetes mellitus,IKBKB;TNF,8.96E-03
+Gastric cancer,CDKN1A;TP53;FGF2,1.11E-02
+Cushing syndrome,POMC;CDKN1A;CREB1,1.24E-02
+Endometrial cancer,CDKN1A;TP53,1.40E-02
+VEGF signaling pathway,NOS3;PTGS2,1.44E-02
+cGMP-PKG signaling pathway,CREB1;NOS3;CALM2,1.51E-02
+Hepatocellular carcinoma,CDKN1A;GSTP1;TP53,1.53E-02
+Arachidonic acid metabolism,PTGS2;PTGS1,1.54E-02
+Steroid hormone biosynthesis,AKR1C1;COMT,1.54E-02
+Basal cell carcinoma,CDKN1A;TP53,1.64E-02
+Cortisol synthesis and secretion,POMC;CREB1,1.74E-02
+Caffeine metabolism,XDH,1.85E-02
+Fc epsilon RI signaling pathway,IL4;TNF,1.89E-02
+Renal cell carcinoma,CDKN1A;HIF1A,1.94E-02
+Central carbon metabolism in cancer,TP53;HIF1A,1.99E-02
+Neutrophil extracellular trap formation,SELP;MPO;RELA,2.09E-02
+Non-small cell lung cancer,CDKN1A;TP53,2.10E-02
+Thyroid hormone synthesis,CREB1;ALB,2.27E-02
+Gastric acid secretion,CA2;CALM2,2.33E-02
+Metabolism of xenobiotics by cytochrome P450,AKR1C1;GSTP1,2.33E-02
+Diabetic cardiomyopathy,PARP1;NOS3;RELA,2.51E-02
+Insulin secretion,ADCYAP1;CREB1,2.93E-02
+Hypertrophic cardiomyopathy,IL6;TNF,3.18E-02
+Salivary secretion,NOS1;CALM2,3.38E-02
+Staphylococcus aureus infection,IL10;SELP,3.51E-02
+Inflammatory mediator regulation of TRP channels,NGF;CALM2,3.72E-02
+Glucagon signaling pathway,CREB1;CALM2,4.36E-02
+Cholinergic synapse,CREB1;FOS,4.80E-02
+Nitrogen metabolism,CA2,5.14E-02
+Phenylalanine metabolism,MAOA,5.14E-02
+Thyroid hormone signaling pathway,TP53;HIF1A,5.43E-02
+Cell cycle,CDKN1A;TP53,5.67E-02
+Platelet activation,NOS3;PTGS1,5.67E-02
+Systemic lupus erythematosus,IL10;TNF,6.58E-02
+Histidine metabolism,MAOA,6.61E-02
+Autophagy,HIF1A;CTSB,6.75E-02
+Insulin signaling pathway,IKBKB;CALM2,6.75E-02
+Proximal tubule bicarbonate reclamation,CA2,6.90E-02
+Retrograde endocannabinoid signaling,CNR1;PTGS2,7.71E-02
+Folate biosynthesis,TH,7.76E-02
+Adrenergic signaling in cardiomyocytes,CREB1;CALM2,7.89E-02
+Collecting duct acid secretion,CA2,8.05E-02
+Phagosome,NOS1;MPO,8.08E-02
+mTOR signaling pathway,IKBKB;TNF,8.26E-02
+Phototransduction,CALM2,8.33E-02
+Glyoxylate and dicarboxylate metabolism,CAT,8.90E-02
+Circadian rhythm,CREB1,9.18E-02
+Base excision repair,PARP1,9.75E-02
+"Glycine, serine and threonine metabolism",MAOA,1.17E-01
+Chemokine signaling pathway,IKBKB;RELA,1.19E-01
+Ferroptosis,TP53,1.20E-01
+Homologous recombination,RAD51,1.20E-01
+Vasopressin-regulated water reabsorption,CREB1,1.28E-01
+Ovarian steroidogenesis,PTGS2,1.47E-01
+Fanconi anemia pathway,RAD51,1.55E-01
+Thermogenesis,CREB1;CNR1,1.62E-01
+Glutathione metabolism,GSTP1,1.62E-01
+Long-term depression,NOS1,1.70E-01
+Viral myocarditis,CASP3,1.70E-01
+Long-term potentiation,CALM2,1.88E-01
+Arrhythmogenic right ventricular cardiomyopathy,GJA1,2.13E-01
+Complement and coagulation cascades,F3,2.32E-01
+ErbB signaling pathway,CDKN1A,2.32E-01
+Gap junction,GJA1,2.40E-01
+Bile secretion,CA2,2.44E-01
+Morphine addiction,OPRM1,2.47E-01
+GnRH signaling pathway,CALM2,2.51E-01
+TGF-beta signaling pathway,TNF,2.54E-01
+Dilated cardiomyopathy,TNF,2.58E-01
+Phosphatidylinositol signaling system,CALM2,2.61E-01
+Pancreatic secretion,CA2,2.72E-01
+Lysosome,CTSB,3.29E-01
+Oocyte meiosis,CALM2,3.31E-01
+Purine metabolism,XDH,3.31E-01
+Vascular smooth muscle contraction,CALM2,3.39E-01
+Signaling pathways regulating pluripotency of stem cells,FGF2,3.60E-01
+Cell adhesion molecules,SELP,3.69E-01
+Wnt signaling pathway,TP53,4.04E-01
+Protein processing in endoplasmic reticulum,ATF6,4.13E-01
+Regulation of actin cytoskeleton,FGF2,4.94E-01
+Olfactory transduction,CALM2,7.49E-01

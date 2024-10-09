@@ -34,7 +34,6 @@ class NetworkTypeProcessor:
         return gene_ingredient_df
 
     def _create_output_files(self, gene_term_df, gene_ingredient_df, interaction_nodes):
-        print("Interaction nodes:", interaction_nodes)
 
         node_relationships_df = pd.concat(
             [
@@ -89,11 +88,14 @@ class NetworkTypeProcessor:
 
 
 generate_type = NetworkTypeProcessor().process_from_dataframe
-# 示例调用
-processor = NetworkTypeProcessor()
-node_relationships_df, node_types_df = processor.process_from_file(
-    "/home/liuyan/projects/package/biorange/notebooks/kegg_test.csv",
-    "/home/liuyan/projects/package/biorange/notebooks/targets_total_file.csv",
-)
-# node_relationships_df.to_csv("node_file33.csv", index=False)
-# node_types_df.to_csv("type_file33.csv", index=False)
+
+
+if __name__ == "__main__":
+    # 示例调用
+    processor = NetworkTypeProcessor()
+    node_relationships_df, node_types_df = processor.process_from_file(
+        "/home/liuyan/projects/package/biorange/notebooks/kegg_test.csv",
+        "/home/liuyan/projects/package/biorange/notebooks/targets_total_file.csv",
+    )
+    # node_relationships_df.to_csv("node_file33.csv", index=False)
+    # node_types_df.to_csv("type_file33.csv", index=False)
