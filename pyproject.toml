@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "biorange"
-version = "1.2.0"
+version = "1.2.1"
 description = ""
 authors = ["liuyan <lyfx99@icloud.com>"]
 readme = "README.md"
