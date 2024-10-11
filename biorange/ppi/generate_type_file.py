@@ -25,11 +25,11 @@ class NetworkTypeProcessor:
 
     def _associate_ingredients(self, gene_term_df, targets_df):
         merged_df = gene_term_df.merge(
-            targets_df[["gene_name", "ingredient_name"]],
+            targets_df[["gene_name", "compound_name"]],
             on="gene_name",
             how="left",
         )
-        gene_ingredient_df = merged_df[["gene_name", "ingredient_name"]].dropna()
+        gene_ingredient_df = merged_df[["gene_name", "compound_name"]].dropna()
 
         return gene_ingredient_df
 
@@ -40,8 +40,8 @@ class NetworkTypeProcessor:
                 gene_term_df[["gene_name", "term"]].rename(
                     columns={"gene_name": "node1", "term": "node2"}
                 ),
-                gene_ingredient_df[["gene_name", "ingredient_name"]].rename(
-                    columns={"gene_name": "node1", "ingredient_name": "node2"}
+                gene_ingredient_df[["gene_name", "compound_name"]].rename(
+                    columns={"gene_name": "node1", "compound_name": "node2"}
                 ),
                 interaction_nodes[["preferredName_A", "preferredName_B"]].rename(
                     columns={"preferredName_A": "node1", "preferredName_B": "node2"}
@@ -58,8 +58,8 @@ class NetworkTypeProcessor:
                 gene_term_df[["gene_name"]]
                 .rename(columns={"gene_name": "node"})
                 .assign(type="target"),
-                gene_ingredient_df[["ingredient_name"]]
-                .rename(columns={"ingredient_name": "node"})
+                gene_ingredient_df[["compound_name"]]
+                .rename(columns={"compound_name": "node"})
                 .assign(type="compound"),
             ],
             ignore_index=True,
@@ -94,8 +94,8 @@ if __name__ == "__main__":
     # 示例调用
     processor = NetworkTypeProcessor()
     node_relationships_df, node_types_df = processor.process_from_file(
-        "/home/liuyan/projects/package/biorange/notebooks/kegg_test.csv",
-        "/home/liuyan/projects/package/biorange/notebooks/targets_total_file.csv",
+        "/home/liuyan/projects/package/biorange/notebooks/data/kegg_test.csv",
+        "/home/liuyan/projects/package/biorange/notebooks/data/targets_total_file.csv",
     )
-    # node_relationships_df.to_csv("node_file33.csv", index=False)
-    # node_types_df.to_csv("type_file33.csv", index=False)
+    node_relationships_df.to_csv("node_file66.csv", index=False)
+    node_types_df.to_csv("type_file66.csv", index=False)

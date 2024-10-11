@@ -11,17 +11,17 @@ def create_custom_layout(node_types, num_rows, num_cols):
 
     for i, node in enumerate(node_types["pathway"]):
         pos[node] = (
-            -1.6,
+            -2,
             i + y_offsets["pathway"],
         )  # 调节括号里的常数，可以调整pathway节点的位置，数值越小，越向右移
 
     for i, node in enumerate(node_types["target"]):
-        x = (i % num_cols) * 0.8 - (num_cols * 0.2) / 2
+        x = (i % num_cols) * 0.08 - (num_cols * 0.2) / 2
         y = (i // num_cols) * 0.6 + y_offsets["target"]
         pos[node] = (x, y)
 
-    for i, node in enumerate(node_types["component"]):
-        pos[node] = (0.3, i + y_offsets["component"])
+    for i, node in enumerate(node_types["compound"]):
+        pos[node] = (0.3, i + y_offsets["compound"])
 
     centers = {
         t: sum(pos[n][1] for n in node_types[t]) / len(node_types[t])
@@ -65,8 +65,8 @@ def draw_custom_layout(
     type_dict = types_df.set_index("node")["type"].to_dict()
     nx.set_node_attributes(G, type_dict, "type")
 
-    type_color = {"component": "#0D71BF", "target": "#2BB11E", "pathway": "#F56327"}
-    type_shape = {"component": "d", "target": "o", "pathway": "*"}
+    type_color = {"compound": "#0D71BF", "target": "#2BB11E", "pathway": "#F56327"}
+    type_shape = {"compound": "d", "target": "o", "pathway": "*"}
 
     node_types = {
         t: [n for n, d in G.nodes(data=True) if d["type"] == t] for t in type_color
@@ -76,8 +76,8 @@ def draw_custom_layout(
 
     plt.figure(figsize=figsize)
 
-    node_sizes = {"component": 200, "target": 300, "pathway": 200}
-    font_sizes = {"component": 10, "target": 6, "pathway": 10}
+    node_sizes = {"compound": 200, "target": 300, "pathway": 200}
+    font_sizes = {"compound": 10, "target": 6, "pathway": 10}
 
     for node_type, nodes in node_types.items():
         nx.draw_networkx_nodes(
@@ -123,8 +123,8 @@ def draw_concentric_layout(
     type_dict = types_df.set_index("node")["type"].to_dict()
     nx.set_node_attributes(G, type_dict, "type")
 
-    type_color = {"component": "#FEBA2C", "target": "#DA5A6A", "pathway": "#8A09A5"}
-    type_shape = {"component": "s", "target": "o", "pathway": "*"}
+    type_color = {"compound": "#FEBA2C", "target": "#DA5A6A", "pathway": "#8A09A5"}
+    type_shape = {"compound": "s", "target": "o", "pathway": "*"}
 
     node_types = {
         t: [n for n, d in G.nodes(data=True) if d["type"] == t] for t in type_color
@@ -148,15 +148,15 @@ def draw_concentric_layout(
             for i in range(len(target_layers))
         ]
 
-    compounds_nodes = node_types["component"]
+    compounds_nodes = node_types["compound"]
     pathway_nodes = node_types["pathway"]
     layers = [compounds_nodes, *target_layers, pathway_nodes]
     pos = create_concentric_layout(G, layers, layer_radii)
 
     plt.figure(figsize=figsize)
 
-    node_sizes = {"component": 200, "target": 500, "pathway": 700}
-    font_sizes = {"component": 8, "target": 8, "pathway": 6}
+    node_sizes = {"compound": 200, "target": 500, "pathway": 700}
+    font_sizes = {"compound": 8, "target": 8, "pathway": 6}
 
     for node_type, nodes in node_types.items():
         nx.draw_networkx_nodes(
