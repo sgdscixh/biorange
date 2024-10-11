@@ -177,7 +177,9 @@ class TCMDataProcessor:
             return pd.DataFrame()
 
         # 过滤后的 DataFrame
-        filtered_df = final_df[final_df["combined_score"] > 300]
+        filtered_df = final_df[
+            (final_df["combined_score"] > 300) & (final_df["gene_name"] != "N/A")
+        ].drop_duplicates()  # 去除重复行
 
         return filtered_df
 
@@ -220,12 +222,13 @@ stich_inchikey_target = TCMDataProcessor().search
 if __name__ == "__main__":
     processor = TCMDataProcessor()
     df = pd.read_csv(
-        "/home/liuyan/projects/package/biorange/biorange/target_predict/input_data/admet_filtered_ingredients.csv"
+        "/home/liuyan/projects/package/biorange/biorange/data/admet_filtered_ingredients.csv"
     )
     df_list = df["inchikey"].tolist()
     result_df = processor.search(
         inchikeys=df_list,
     )
-    result_df = result_df.drop_duplicates()  # 去除重复行
+    result_df = result_df  # 去除重复行
     print(result_df)
     # result_df.to_csv("results/output2/stitch_target_raw333.csv", index=False)
+    # .drop_duplicates()
