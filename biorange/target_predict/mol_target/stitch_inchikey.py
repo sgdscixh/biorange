@@ -159,6 +159,7 @@ class TCMDataProcessor:
         internal_data_file: str = get_data_file_path(
             "TCM_NGM_inchike_isosmile_11294.csv"
         ),
+        combined_score_threshold: int = 300,
     ) -> pd.DataFrame:
         """主接口：根据 InChIKey 查找对应的基因名。"""
 
@@ -181,7 +182,8 @@ class TCMDataProcessor:
 
         # 过滤后的 DataFrame
         filtered_df = final_df[
-            (final_df["combined_score"] > 300) & (final_df["gene_name"] != "N/A")
+            (final_df["combined_score"] > combined_score_threshold)
+            & (final_df["gene_name"] != "N/A")
         ].drop_duplicates()  # 去除重复行
 
         # 加载内置数据
@@ -235,9 +237,7 @@ if __name__ == "__main__":
         "/home/liuyan/projects/package/biorange/biorange/data/admet_filtered_ingredients.csv"
     )
     df_list = df["inchikey"].tolist()
-    result_df = processor.search(
-        inchikeys=df_list,
-    )
+    result_df = processor.search(inchikeys=df_list, combined_score_threshold=200)
     result_df = result_df  # 去除重复行
     print(result_df)
     # result_df.to_csv("results/output2/stitch_target_raw333.csv", index=False)
