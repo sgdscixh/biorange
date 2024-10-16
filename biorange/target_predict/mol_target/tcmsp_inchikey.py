@@ -20,7 +20,13 @@ class TCMSPTargetScraper:
         logger.debug(f"Merged dataframe shape: {merged_df.shape}")
         return merged_df
 
-    def search_inchikeys(self, inchikeys):
+    def search_inchikeys(
+        self,
+        inchikeys,
+        internal_data_file: str = get_data_file_path(
+            "TCM_NGM_inchike_isosmile_11294.csv"
+        ),
+    ):
         logger.info(f"Searching for InChIKeys: {inchikeys}")
 
         # 筛选输入的inchikeys
@@ -45,7 +51,13 @@ class TCMSPTargetScraper:
             )
             results_df = results_df.dropna(subset=["gene_name"])
 
-        return results_df
+        # 加载内置数据
+        internal_data_df = pd.read_csv(
+            internal_data_file  # , sep="\t"
+        )  # 根据实际文件格式调整
+        # 合并内置数据
+        merged_df = pd.merge(results_df, internal_data_df, on="inchikey", how="left")
+        return merged_df
 
 
 tcmsp_inchikey_target = TCMSPTargetScraper().search_inchikeys
@@ -56,9 +68,9 @@ if __name__ == "__main__":
 
     # 从CSV文件读取inchikeys
     inchikeys_df = pd.read_csv(
-        "/home/liuyan/projects/package/biorange/biorange/target_predict/input_data/admet_filtered_ingredients.csv"
+        "/home/liuyan/projects/package/biorange/biorange/data/inchikey.csv"
     )
     inchikeys_list = inchikeys_df["inchikey"].tolist()
 
     result = searcher.search_inchikeys(inchikeys_list)
-    result.to_csv("results/output2/tcmsp_output_target.csv", index=False)
+    result.to_csv("./tcmsp_output_target.csv", index=False)
