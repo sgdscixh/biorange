@@ -9,15 +9,13 @@ def chembl_inchikey_target(
     confidence_types=("active", "both"),
     threshold=6,
 ):
-    # 将输入的compound_input列表转换为DataFrame
-    compound_df = pd.DataFrame(compound_input)  # compound_input包含inchikey列
 
     # 读取大表数据
     chembl_large = get_data_file_path("chembl_25_targets_internal_data_homo.csv.gz")
     chembl_large_table = pd.read_csv(chembl_large)
 
     # 进行inchikeys筛选
-    inchikey_list = compound_df["inchikey"].tolist()
+    inchikey_list = compound_input
     chembl_targets = chembl_large_table[
         chembl_large_table["inchikey"].isin(inchikey_list)
     ]
