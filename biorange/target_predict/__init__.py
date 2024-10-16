@@ -1,8 +1,5 @@
 ## 成分靶点的逻辑
-from biorange.target_predict.mol_target.chembl_final import (
-    ChEMBLTargetScraper,
-    chembl_smiles_target,
-)
+
 
 from biorange.target_predict.mol_target.stitch_inchikey import (
     TCMDataProcessor as StichTargetIchikeyScraper,
@@ -43,3 +40,5 @@ from biorange.target_predict.disease_target.genecards import (
 )
 
 from biorange.target_predict.data_processing.ingredient_input import admet_filter
+
+from biorange.target_predict.mol_target.chembl_local import chembl_target_prediction

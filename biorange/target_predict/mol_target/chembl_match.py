@@ -6,7 +6,7 @@ from biorange.utils.package_fileload import get_data_file_path
 
 class ChemblTargetPredictor:
     """
-    用于从ChEMBL获取目标预测的类。
+    用于从ChEMBL获取目标预测的类。2019版离线chembl,可无限使用。
     """
 
     def __init__(self):
@@ -84,7 +84,7 @@ class ChemblTargetPredictor:
         # 读取内置数据文件
         try:
             internal_data_path = get_data_file_path(
-                "chembl_uniport_clean.csv"
+                "chembl_uniport_gene25.csv"
             )  # 没问题啊但是他说没有这个文件 在哪里没有呀
             internal_data = pd.read_csv(internal_data_path)
         except FileNotFoundError:
@@ -106,10 +106,11 @@ class ChemblTargetPredictor:
 
 
 if __name__ == "__main__":
-    df = pd.read_csv("/home/liuyan/projects/package/biorange/biorange/data/smiles.csv")
+    df = pd.read_csv(
+        "/home/liuyan/projects/package/biorange/biorange/data/sup_smiles.csv"
+    )
     smiles = df["smiles"].tolist()
-
     predictors = ChemblTargetPredictor()
     res = predictors.search_smiles(smiles)
-    res.to_csv("./CHEMBL_MATCH.csv")
+    res.to_csv("./CHEMBL_25_all_sup.csv")
     print(res.columns.tolist())

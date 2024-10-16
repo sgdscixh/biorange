@@ -10,9 +10,9 @@ class NetworkTypeProcessor:
         kegg_df["gene_name"] = kegg_df["gene_name"].str.split(";")
         expanded_kegg_df = kegg_df.explode("gene_name")
 
-        gene_term_df = expanded_kegg_df[["gene_name", "term"]]
+        gene_description_df = expanded_kegg_df[["gene_name", "Description"]]
 
-        return gene_term_df
+        return gene_description_df
 
     def _fetch_ppi_data(self, gene_names):
         ppi_data = ppi_final.fetch_ppi_data(gene_names)
@@ -23,8 +23,8 @@ class NetworkTypeProcessor:
             return
         return interaction_nodes
 
-    def _associate_ingredients(self, gene_term_df, targets_df):
-        merged_df = gene_term_df.merge(
+    def _associate_ingredients(self, gene_description_df, targets_df):
+        merged_df = gene_description_df.merge(
             targets_df[["gene_name", "compound_name"]],
             on="gene_name",
             how="left",
@@ -33,12 +33,14 @@ class NetworkTypeProcessor:
 
         return gene_ingredient_df
 
-    def _create_output_files(self, gene_term_df, gene_ingredient_df, interaction_nodes):
+    def _create_output_files(
+        self, gene_description_df, gene_ingredient_df, interaction_nodes
+    ):
 
         node_relationships_df = pd.concat(
             [
-                gene_term_df[["gene_name", "term"]].rename(
-                    columns={"gene_name": "node1", "term": "node2"}
+                gene_description_df[["gene_name", "Description"]].rename(
+                    columns={"gene_name": "node1", "Description": "node2"}
                 ),
                 gene_ingredient_df[["gene_name", "compound_name"]].rename(
                     columns={"gene_name": "node1", "compound_name": "node2"}
@@ -52,10 +54,10 @@ class NetworkTypeProcessor:
 
         node_types_df = pd.concat(
             [
-                gene_term_df[["term"]]
-                .rename(columns={"term": "node"})
+                gene_description_df[["Description"]]
+                .rename(columns={"Description": "node"})
                 .assign(type="pathway"),
-                gene_term_df[["gene_name"]]
+                gene_description_df[["gene_name"]]
                 .rename(columns={"gene_name": "node"})
                 .assign(type="target"),
                 gene_ingredient_df[["compound_name"]]
@@ -78,11 +80,15 @@ class NetworkTypeProcessor:
         return self._process(kegg_df, targets_total_df)
 
     def _process(self, kegg_df, targets_total_df):
-        gene_term_df = self._extract_kegg_attributes(kegg_df)
-        interaction_nodes = self._fetch_ppi_data(gene_term_df["gene_name"].unique())
-        gene_ingredient_df = self._associate_ingredients(gene_term_df, targets_total_df)
+        gene_description_df = self._extract_kegg_attributes(kegg_df)
+        interaction_nodes = self._fetch_ppi_data(
+            gene_description_df["gene_name"].unique()
+        )
+        gene_ingredient_df = self._associate_ingredients(
+            gene_description_df, targets_total_df
+        )
         node_relationships_df, node_types_df = self._create_output_files(
-            gene_term_df, gene_ingredient_df, interaction_nodes
+            gene_description_df, gene_ingredient_df, interaction_nodes
         )
         return node_relationships_df, node_types_df
 
