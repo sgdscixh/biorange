@@ -4,6 +4,7 @@
 from biorange.target_predict.mol_target.stitch_inchikey import (
     TCMDataProcessor as StichTargetIchikeyScraper,
     stich_inchikey_target,
+    stich_inchikey_rawdate,
 )
 
 # TODO 还是文件夹逻辑，不统一待修改
@@ -41,4 +42,4 @@ from biorange.target_predict.disease_target.genecards import (
 
 from biorange.target_predict.data_processing.ingredient_input import admet_filter
 
-from biorange.target_predict.mol_target.chembl_local import chembl_target_prediction
+from biorange.target_predict.mol_target.chembl_local import chembl_inchikey_target

@@ -2,7 +2,7 @@ import pandas as pd
 from biorange.utils.package_fileload import get_data_file_path
 
 
-def chembl_target_prediction(
+def chembl_inchikey_target(
     compound_input,
     organism="Homo sapiens",
     confidence_column="confidence80",
@@ -13,7 +13,7 @@ def chembl_target_prediction(
     compound_df = pd.DataFrame(compound_input)  # compound_input包含inchikey列
 
     # 读取大表数据
-    chembl_large = get_data_file_path("chembl_25_targets_internal_data.csv")
+    chembl_large = get_data_file_path("chembl_25_targets_internal_data.csv.gz")
     chembl_large_table = pd.read_csv(chembl_large)
 
     # 进行inchikeys筛选
@@ -45,5 +45,5 @@ if __name__ == "__main__":
         {"inchikey": "YCIMNLLNPGFGHC-UHFFFAOYSA-N"},
     ]
 
-    result = chembl_target_prediction(compound_input)
+    result = chembl_inchikey_target(compound_input)
     print(result)

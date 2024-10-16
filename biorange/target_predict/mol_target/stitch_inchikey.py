@@ -156,6 +156,9 @@ class TCMDataProcessor:
         protein_file: str = get_data_file_path(
             "9606.protein_chemical.links.transfer.v5.0.tsv.gz"
         ),
+        internal_data_file: str = get_data_file_path(
+            "TCM_NGM_inchike_isosmile_11294.csv"
+        ),
     ) -> pd.DataFrame:
         """主接口：根据 InChIKey 查找对应的基因名。"""
 
@@ -181,7 +184,13 @@ class TCMDataProcessor:
             (final_df["combined_score"] > 300) & (final_df["gene_name"] != "N/A")
         ].drop_duplicates()  # 去除重复行
 
-        return filtered_df
+        # 加载内置数据
+        internal_data_df = pd.read_csv(
+            internal_data_file  # , sep="\t"
+        )  # 根据实际文件格式调整
+        # 合并内置数据
+        merged_df = pd.merge(filtered_df, internal_data_df, on="inchikey", how="left")
+        return merged_df  # filtered_df
 
     def get_rawdata(
         self,
@@ -217,6 +226,7 @@ class TCMDataProcessor:
 
 
 stich_inchikey_target = TCMDataProcessor().search
+stich_inchikey_rawdate = TCMDataProcessor().get_rawdata
 
 # 使用示例
 if __name__ == "__main__":

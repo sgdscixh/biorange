@@ -13,3 +13,4 @@
 - 1.2.0 新增adme，bugfix
 - 1.2.1 修复小小bug
 - 1.3.0 新增autodock
+- 1.4.0 新增本地chembl,统一kegg、type文件创建的参数名，stitch去重
