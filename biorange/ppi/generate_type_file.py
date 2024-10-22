@@ -11,17 +11,26 @@ class NetworkTypeProcessor:
         expanded_kegg_df = kegg_df.explode("gene_name")
 
         gene_description_df = expanded_kegg_df[["gene_name", "Description"]]
-
         return gene_description_df
 
     def _fetch_ppi_data(self, gene_names):
         ppi_data = ppi_final.fetch_ppi_data(gene_names)
         if ppi_data is None:
-            return
+            return pd.DataFrame()
+
         interaction_nodes = ppi_final.parse_interaction_data(ppi_data)
         if interaction_nodes is None:
-            return
-        return interaction_nodes
+            return pd.DataFrame()
+
+        # Filter interaction nodes to only include those present in gene_names
+        valid_gene_names = set(gene_names)
+        filtered_nodes = interaction_nodes[
+            interaction_nodes["preferredName_A"].isin(valid_gene_names)
+            & interaction_nodes["preferredName_B"].isin(valid_gene_names)
+        ]
+
+        filtered_nodes.to_csv("./inter.csv", index=False)
+        return filtered_nodes
 
     def _associate_ingredients(self, gene_description_df, targets_df):
         merged_df = gene_description_df.merge(
@@ -36,7 +45,6 @@ class NetworkTypeProcessor:
     def _create_output_files(
         self, gene_description_df, gene_ingredient_df, interaction_nodes
     ):
-
         node_relationships_df = pd.concat(
             [
                 gene_description_df[["gene_name", "Description"]].rename(
@@ -69,13 +77,11 @@ class NetworkTypeProcessor:
 
         return node_relationships_df, node_types_df
 
-    # 从文件中处理
     def process_from_file(self, kegg_file_path, targets_total_file):
         kegg_df = pd.read_csv(kegg_file_path)
         targets_total_df = pd.read_csv(targets_total_file)
         return self._process(kegg_df, targets_total_df)
 
-    # 从DataFrame中处理，你喜欢从文件处理的话，以后让AI多生成一个纯df的方法，真的太影响了，后面是需要拓展的 从文件处理拓展不了 写死了
     def process_from_dataframe(self, kegg_df, targets_total_df):
         return self._process(kegg_df, targets_total_df)
 
@@ -90,18 +96,16 @@ class NetworkTypeProcessor:
         node_relationships_df, node_types_df = self._create_output_files(
             gene_description_df, gene_ingredient_df, interaction_nodes
         )
-        return node_relationships_df, node_types_df
+        return node_relationships_df, node_types_df, interaction_nodes
 
 
 generate_type = NetworkTypeProcessor().process_from_dataframe
 
-
 if __name__ == "__main__":
-    # 示例调用
     processor = NetworkTypeProcessor()
-    node_relationships_df, node_types_df = processor.process_from_file(
-        "/home/liuyan/projects/package/biorange/notebooks/data/kegg_test.csv",
-        "/home/liuyan/projects/package/biorange/notebooks/data/targets_total_file.csv",
+    node_relationships_df, node_types_df, _ = processor.process_from_file(
+        "/home/liuyan/projects/package/biorange/biorange/data/kegg_df.csv",
+        "/home/liuyan/projects/package/biorange/biorange/data/target_df.csv",
     )
-    node_relationships_df.to_csv("node_file66.csv", index=False)
-    node_types_df.to_csv("type_file66.csv", index=False)
+    node_relationships_df.to_csv("node_file88.csv", index=False)
+    node_types_df.to_csv("type_file88.csv", index=False)
