@@ -238,7 +238,6 @@ if __name__ == "__main__":
     )
     df_list = df["inchikey"].tolist()
     result_df = processor.search(inchikeys=df_list, combined_score_threshold=200)
-    result_df = result_df  # 去除重复行
     print(result_df)
     # result_df.to_csv("results/output2/stitch_target_raw333.csv", index=False)
     # .drop_duplicates()

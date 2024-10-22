@@ -7,7 +7,7 @@ def chembl_inchikey_target(
     organism="Homo sapiens",
     confidence_column="confidence80",
     confidence_types=("active", "both"),
-    threshold=6,
+    threshold=5,
 ):
 
     # 读取大表数据
@@ -38,10 +38,7 @@ if __name__ == "__main__":
     # compound_input = pd.read_csv(
     #     "/home/liuyan/projects/package/biorange/biorange/data/first_input_data.csv"
     # )
-    compound_input = [
-        {"inchikey": "UCMIRNVEIXFBKS-UHFFFAOYSA-N"},
-        {"inchikey": "YCIMNLLNPGFGHC-UHFFFAOYSA-N"},
-    ]
+    compound_input = ["UCMIRNVEIXFBKS-UHFFFAOYSA-N", "YCIMNLLNPGFGHC-UHFFFAOYSA-N"]
 
     result = chembl_inchikey_target(compound_input)
     print(result)

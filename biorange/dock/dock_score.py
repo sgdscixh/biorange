@@ -38,8 +38,10 @@ if __name__ == "__main__":
 
     # 使用示例
     # 先运行dock_run_diffdock.py
-    receptor_file = "results/6w70.pdb"
-    ligand_file = "results/complex_0/rank1_confidence-0.71.sdf"
+    receptor_file = "/home/liuyan/projects/package/biorange/biorange/dock/todo/AF-P31749-F1-model_v4.pdb"
+    ligand_file = "/home/liuyan/projects/package/biorange/results/complex_0/rank1_confidence-0.18.sdf"
+    # receptor_file = "/home/liuyan/projects/package/biorange/notebooks/fixed_output.pdb"
+    # ligand_file = "/home/liuyan/projects/package/biorange/results/complex_0/rank1_confidence-0.18.sdf"
 
     results = smina_score(receptor_file, ligand_file)
     print(results)

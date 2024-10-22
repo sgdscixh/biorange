@@ -125,8 +125,8 @@ diffdock_run = DiffDockRunner(
 
 if __name__ == "__main__":
     # 设置参数
-    protein_path = "results/6w70.pdb"
-    ligand_path = "results/6w70_ligand.sdf"
+    protein_path = "/home/liuyan/projects/package/biorange/notebooks/fixed_output.pdb"  # "results/6w70.pdb"
+    ligand_path = "/home/liuyan/projects/package/biorange/biorange/dock/todo/Conformer3D_COMPOUND_CID_6041.sdf"  # "results/6w70_ligand.sdf"
     docker_image = "august777/diffdocker:full-0910"
 
     runner = DiffDockRunner(docker_image=docker_image)

@@ -19,10 +19,10 @@ from biorange.target_predict.mol_target.tcmsp_inchikey import (
     tcmsp_inchikey_target,
 )
 
-from biorange.target_predict.mol_target.tcmsp_smiles import (
-    TCMSPTargetScraper as TCMSPTargetSmilesScraper,
-    tcmsp_smiles_target,
-)
+# from biorange.target_predict.mol_target.tcmsp_smiles import (
+#     TCMSPTargetScraper as TCMSPTargetSmilesScraper,
+#     tcmsp_smiles_target,
+# )
 
 ## 疾病靶点逻辑
 from biorange.target_predict.disease_target.omim import (

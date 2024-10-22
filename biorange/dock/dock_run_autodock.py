@@ -106,10 +106,8 @@ autodock_run = AutoDockRunner().runflow
 # 使用示例
 if __name__ == "__main__":
     workflow = AutoDockRunner()
-    pdb_file = "/home/liuyan/projects/package/biorange/biorange/dock/todo/6w70.pdb"
-    sdf_file = (
-        "/home/liuyan/projects/package/biorange/biorange/dock/todo/6w70_ligand.sdf"
-    )
+    pdb_file = "/home/liuyan/projects/package/biorange/notebooks/fixed_output2.pdb"
+    sdf_file = "/home/liuyan/projects/package/biorange/biorange/dock/todo/Conformer3D_COMPOUND_CID_164950.sdf"
     outdir = "/home/liuyan/projects/package/biorange/biorange/dock/todo/"
 
     workflow.runflow(pdb_file, sdf_file, outdir)

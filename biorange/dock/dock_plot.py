@@ -85,8 +85,9 @@ if __name__ == "__main__":
 
     # 使用示例 先运行 前面的哈
     viewer_ = visualize_molecule_complex(
-        "results/complex_0/rank1_confidence-0.71.sdf", "results/6w70.pdb"
+        "/home/liuyan/projects/package/biorange/notebooks/fixed_output.pdb",
+        "/home/liuyan/projects/package/biorange/results/complex_0/rank1_confidence-0.18.sdf",
     )
     # viewer_.show()  # 交互式环境可用
     # view.display(gui=True, style="ipywidgets")   # 交互式环境可用
-    viewer_.write_html("results/dock_plot.html", fullpage=True)
+    viewer_.write_html("./results/dock_plot.html", fullpage=True)
