@@ -25,7 +25,7 @@ def split_sdf_file(sdf_path):
     return
 
 
-# 使用示例
-split_sdf_file(
-    "/home/liuyan/projects/package/biorange/biorange/dock/todo/ligand1_docked__3e8dbfee-2304-4636-a3ec-8b8e57975564"
-)
+if __name__ == "__main__":
+    split_sdf_file(
+        "/home/liuyan/projects/package/biorange/biorange/dock/todo/ligand1_docked__3e8dbfee-2304-4636-a3ec-8b8e57975564"
+    )

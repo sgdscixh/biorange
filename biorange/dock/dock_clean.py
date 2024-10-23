@@ -36,8 +36,8 @@ def fix_pdb(input_path, output_path, ph=7.4):
     print(f"Structure has been fixed and saved to {output_path}")
 
 
-# 使用示例
-fix_pdb(
-    "/home/liuyan/projects/package/biorange/biorange/dock/todo/AF-P05177-F1-model_v4.pdb",
-    "fixed_output2.pdb",
-)
+if __name__ == "__main__":
+    fix_pdb(
+        "/home/liuyan/projects/package/biorange/biorange/dock/todo/AF-P05177-F1-model_v4.pdb",
+        "fixed_output2.pdb",
+    )

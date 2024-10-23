@@ -1,7 +1,8 @@
 """分子对接模块"""
 
-# 预处理
+# 处理
 from biorange.dock.dock_clean import fix_pdb as dock_fix_protein
+from biorange.dock.dock_split import split_sdf_file as dock_split_sdf
 
 # 分子对接软件封装
 from biorange.dock.dock_run_diffdock import DiffDockRunner, diffdock_run
