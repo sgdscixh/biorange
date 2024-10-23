@@ -25,6 +25,7 @@ planemo = "^0.75.26"
 prolif = {extras = ["tutorials"], version = "^2.0.3"}
 numpy = "1.26.4"
 beautifulsoup4 = "^4.12.3"
+pyfiglet = "^1.0.2"
 
 [tool.poetry.scripts]
 smina = "biorange.dock.smina:main"
