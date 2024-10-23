@@ -26,3 +26,15 @@ colored_art = colored(ascii_art, color="cyan", attrs=["bold"])
 # 打印带有边框的艺术字和版本号
 print(colored_art.center(50))
 print(colored(f"Version: {__version__}".center(50), color="yellow", attrs=["bold"]))
+
+# 控制导出的东西，隐藏细节
+## 只有被all纳入的才会被导出，不设置__all__的话默认暴露所有不以下划线开头的变量和函数
+__all__ = [
+    "component",
+    "dock",
+    "enrich_analysis",
+    "ppi",
+    "target_predict",
+    "utils",
+    "venn",
+]
