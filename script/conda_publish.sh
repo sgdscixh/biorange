@@ -5,7 +5,8 @@ conda install anaconda-client conda-build
 pip install grayskull 
 
 # 直接转换poetry得包（很轻松几下就结束了，但是需要处理兼容问题）
-grayskull pypi ./dist/biorange-1.4.1.tar.gz 
+grayskull pypi ./dist/biorange-1.4.2.tar.gz 
+# 这一步反复错没问题的 毕竟两个平台 慢慢解决只有
 
 conda-build  biorange   
 

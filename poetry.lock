@@ -458,25 +458,6 @@ url = "https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple"
 reference = "mirrors"
 
 [[package]]
-name = "bs4"
-version = "0.0.2"
-description = "Dummy package for Beautiful Soup (beautifulsoup4)"
-optional = false
-python-versions = "*"
-files = [
-    {file = "bs4-0.0.2-py2.py3-none-any.whl", hash = "sha256:abf8742c0805ef7f662dce4b51cca104cffe52b835238afc169142ab9b3fbccc"},
-    {file = "bs4-0.0.2.tar.gz", hash = "sha256:a48685c58f50fe127722417bae83fe6badf500d54b55f7e39ffe43b798653925"},
-]
-
-[package.dependencies]
-beautifulsoup4 = "*"
-
-[package.source]
-type = "legacy"
-url = "https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple"
-reference = "mirrors"
-
-[[package]]
 name = "cachecontrol"
 version = "0.12.14"
 description = "httplib2 caching for requests"
@@ -5561,4 +5542,4 @@ reference = "mirrors"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "5a02e18113524c4b70598e811390f005ffb214092c3bcfa79198a198c45e47c5"
+content-hash = "cd53692a116af5b6c150b8c9d66f6a720f41d040e41e0e80a968086d4bb33d4b"
