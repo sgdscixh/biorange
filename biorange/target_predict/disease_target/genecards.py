@@ -32,9 +32,10 @@ class GenecardsDiseaseScraper:
 
         if self.download_path == get_data_file_path("GeneCards-SearchResults.csv"):
             # 警告，
-            logger.error(
-                "不可使用默认文件，你需要自行下载genecards结果文件放入：data/GeneCards-SearchResults.csv"
-            )
+            # logger.warning(
+            #     "不可使用默认文件，你需要自行下载genecards结果文件放入：data/GeneCards-SearchResults.csv"
+            # )
+            pass
 
         # 检查本地文件是否存在，如果存在则不启动Playwright
         if not os.path.exists(self.download_path):

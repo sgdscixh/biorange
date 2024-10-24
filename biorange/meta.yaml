@@ -1,5 +1,10 @@
 {% set name = "biorange" %}
-{% set version = "1.4.2" %}
+{% set version = "1.4.3" %}
+
+channels:
+  - anaconda
+  - microsoft
+  - conda-forge
 
 package:
   name: {{ name|lower }}
@@ -7,7 +12,7 @@ package:
 
 source:
   url: file:///home/liuyan/projects/package/biorange/dist/biorange-1.4.2.tar.gz
-  sha256: f76e2af8015c383382f25709d54aee514ef6c8f994fa881377a4df2d49b2c143
+  sha256: 7901fcab1cb49b5fed5aae7fe0dc0df976644da55b398975e6eb5185f3881728
 
 build:
   entry_points:
@@ -22,30 +27,31 @@ requirements:
     - poetry-core
     - pip
   run:
-    - python >=3.10.0,<4.0.0
-    - pandas >=2.2.2,<3.0.0
-    - pyyaml >=6.0.2,<7.0.0
-    - requests >=2.32.3,<3.0.0
-    - mygene >=3.2.2,<4.0.0
-    - playwright >=1.46.0,<2.0.0
-    - networkx >=3.3.0,<4.0.0
-    - matplotlib-base >=3.9.2,<4.0.0
-    - matplotlib-venn >=1.1.1,<2.0.0
-    - docker-py >=7.1.0,<8.0.0
-    - py3dmol >=2.4.0,<3.0.0
-    - gseapy >=1.1.3,<2.0.0
-    - plotnine >=0.13.6,<0.14.0
-    - pytest >=8.3.3,<9.0.0
-    - bioblend >=1.3.0,<2.0.0
-    - planemo >=0.75.26,<0.76.0
-    - prolif >=2.0.3,<3.0.0
-    - numpy 1.26.4
-    - beautifulsoup4 >=4.12.3,<5.0.0
-    - pdbfixer
-    - openmm
-    - openbabel
-
-test:
+    - anaconda::pandas 2.2.2
+    - conda-forge::python >=3.10.0,<4.0.0
+    - conda-forge::pyyaml >=6.0.2,<7.0.0
+    - conda-forge::requests
+    - conda-forge::mygene
+    - conda-forge::networkx
+    - conda-forge::matplotlib-base
+    - conda-forge::matplotlib-venn
+    - conda-forge::docker-py
+    - conda-forge::py3dmol
+    - conda-forge::gseapy >=1.1.3,<2.0.0
+    - conda-forge::plotnine
+    - conda-forge::bioblend
+    - conda-forge::planemo
+    - conda-forge::prolif
+    - conda-forge::numpy 1.26.4
+    - conda-forge::beautifulsoup4
+    - conda-forge::termcolor
+    - conda-forge::rdkit
+    - conda-forge::openbabel
+    - conda-forge::openmm
+    - conda-forge::pdbfixer
+    - pyfiglet
+    - pytest-playwright
+    - playwright-python 1.46.0
 
 about:
   summary: ''
@@ -55,3 +61,4 @@ about:
 extra:
   recipe-maintainers:
     - liuyan
+

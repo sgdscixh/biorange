@@ -33,12 +33,13 @@ class TCMSPComponentLocalScraper:
         为用户提供配置 Playwright 环境的提示。
         """
         if self.use_remote:
-            logger.info(
-                "使用远程 Playwright 服务。确保你已在远程运行：playwright run-server --host 0.0.0.0 --port 1985"
-            )
-            logger.info(
-                f"或docker run -it --rm -p 1985:1985 --ipc=host august777/playwright-server:v1.46.0-jammy"
-            )
+            pass
+            # logger.info(
+            #     "使用远程 Playwright 服务。确保你已在远程运行：playwright run-server --host 0.0.0.0 --port 1985"
+            # )
+            # logger.info(
+            #     f"或docker run -it --rm -p 1985:1985 --ipc=host august777/playwright-server:v1.46.0-jammy"
+            # )
         else:
             logger.info("使用本地 Playwright。确保你已安装：pip install playwright")
             logger.info("并运行：playwright install chromium")

@@ -15,7 +15,6 @@ class TCMDataProcessor:
     def __init__(self):
         self.mg = mygene.MyGeneInfo()
         self.temp_dir = tempfile.TemporaryDirectory()
-        logger.info(f"Temporary directory created at {self.temp_dir.name}")
 
     def _read_csv(self, file_path: str, sep: str = ",") -> pd.DataFrame:
         """读取 CSV 文件并处理可能的空文件错误。"""

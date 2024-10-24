@@ -5,7 +5,7 @@
 
 from pyfiglet import figlet_format
 from termcolor import colored
-from . import component, dock, enrich_analysis, ppi, target_predict, utils, venn
+from . import component, dock, enrich_analysis, ppi, target_predict, utils, venn, data
 
 
 # 尝试获取已安装包的版本号
