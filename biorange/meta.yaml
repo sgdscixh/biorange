@@ -1,10 +1,5 @@
 {% set name = "biorange" %}
-{% set version = "1.4.3" %}
-
-channels:
-  - anaconda
-  - microsoft
-  - conda-forge
+{% set version = "1.4.2" %}
 
 package:
   name: {{ name|lower }}
@@ -12,14 +7,18 @@ package:
 
 source:
   url: file:///home/liuyan/projects/package/biorange/dist/biorange-1.4.2.tar.gz
-  sha256: 7901fcab1cb49b5fed5aae7fe0dc0df976644da55b398975e6eb5185f3881728
+  sha256: 00802e33eb4d8b41fe387d048c917f688db8b2293834b0ecfc1d58914a5309f9
 
 build:
+  rpaths:
+      - lib/
+      - lib64/
   entry_points:
     - smina = biorange.dock.smina:main
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   number: 0
+
 
 requirements:
   host:
@@ -27,9 +26,9 @@ requirements:
     - poetry-core
     - pip
   run:
-    - anaconda::pandas 2.2.2
+    - anaconda::pandas
     - conda-forge::python >=3.10.0,<4.0.0
-    - conda-forge::pyyaml >=6.0.2,<7.0.0
+    - conda-forge::pyyaml
     - conda-forge::requests
     - conda-forge::mygene
     - conda-forge::networkx
@@ -49,6 +48,7 @@ requirements:
     - conda-forge::openbabel
     - conda-forge::openmm
     - conda-forge::pdbfixer
+    - conda-forge::libstdcxx-ng
     - pyfiglet
     - pytest-playwright
     - playwright-python 1.46.0
@@ -61,4 +61,3 @@ about:
 extra:
   recipe-maintainers:
     - liuyan
-
