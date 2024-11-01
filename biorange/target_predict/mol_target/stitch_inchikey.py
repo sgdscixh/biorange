@@ -151,12 +151,14 @@ class TCMDataProcessor:
     def search(
         self,
         inchikeys: Union[str, List[str]],
-        chemical_file: str = get_data_file_path("TCMSP_NGM_STITCH_INCHIKEY.tsv.gz"),
+        chemical_file: str = get_data_file_path(
+            "TCMSP_NGM_STITCH_INCHIKEY_202410.tsv.gz"
+        ),
         protein_file: str = get_data_file_path(
             "9606.protein_chemical.links.transfer.v5.0.tsv.gz"
         ),
         internal_data_file: str = get_data_file_path(
-            "TCM_NGM_inchike_isosmile_11294.csv"
+            "TCM_NGM_inchikey_isosmile_12184.csv"
         ),
         combined_score_threshold: int = 300,
     ) -> pd.DataFrame:

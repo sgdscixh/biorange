@@ -22,7 +22,7 @@ class TCMSPTargetScraper:
         self,
         inchikeys,
         internal_data_file: str = get_data_file_path(
-            "TCM_NGM_inchike_isosmile_11294.csv"
+            "TCM_NGM_inchike_isosmile_12184.csv"
         ),
     ):
         logger.info(f"Searching for InChIKeys: {inchikeys}")
@@ -71,4 +71,5 @@ if __name__ == "__main__":
     inchikeys_list = inchikeys_df["inchikey"].tolist()
 
     result = searcher.search_inchikeys(inchikeys_list)
-    result.to_csv("./tcmsp_output_target.csv", index=False)
+    # result.to_csv("./tcmsp_output_target.csv", index=False)
+    print(result)

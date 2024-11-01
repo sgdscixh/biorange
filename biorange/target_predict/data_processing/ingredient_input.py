@@ -15,7 +15,7 @@ class ADMETFilter:
         self.lipinski_threshold = lipinski_threshold
         self.qed_threshold = qed_threshold
         self.bioavailability_threshold = bioavailability_threshold
-        self.admet_file_path = get_data_file_path("TCM_NGM__ADMET.csv")
+        self.admet_file_path = get_data_file_path("TCM_NGM__ADMET_12184.csv")
         self.admet_data = self._load_admet_data()
 
     def _load_admet_data(self):

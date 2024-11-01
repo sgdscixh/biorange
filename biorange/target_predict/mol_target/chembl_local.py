@@ -11,7 +11,9 @@ def chembl_inchikey_target(
 ):
 
     # 读取大表数据
-    chembl_large = get_data_file_path("chembl_25_targets_internal_data_homo.csv.gz")
+    chembl_large = get_data_file_path(
+        "chembl_25_targets_internal_data_homo_202410.csv.gz"
+    )
     chembl_large_table = pd.read_csv(chembl_large)
 
     # 进行inchikeys筛选
