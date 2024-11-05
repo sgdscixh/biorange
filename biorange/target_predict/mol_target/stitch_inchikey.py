@@ -1,7 +1,7 @@
 import os
 import pandas as pd
 import gzip
-import mygene
+import mygene  # 这些包依赖重ing
 from typing import Generator, Union, List, Dict
 import tempfile
 from biorange.logger import get_logger

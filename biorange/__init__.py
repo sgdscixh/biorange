@@ -5,7 +5,7 @@
 
 from pyfiglet import figlet_format
 from termcolor import colored
-from . import component, dock, enrich_analysis, ppi, target_predict, utils, venn, data
+from . import component, enrich_analysis, ppi, target_predict, utils, venn
 
 
 # 尝试获取已安装包的版本号
@@ -31,10 +31,14 @@ print(colored(f"Version: {__version__}".center(50), color="yellow", attrs=["bold
 ## 只有被all纳入的才会被导出，不设置__all__的话默认暴露所有不以下划线开头的变量和函数
 __all__ = [
     "component",
-    "dock",
     "enrich_analysis",
     "ppi",
     "target_predict",
     "utils",
     "venn",
 ]
+
+
+def init_print():
+    """初始化日志记录器。"""
+    pass
