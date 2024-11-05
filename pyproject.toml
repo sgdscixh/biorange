@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "biorange"
-version = "1.4.3"
+version = "1.4.4"
 description = ""
 authors = ["liuyan <lyfx99@icloud.com>"]
 readme = "README.md"
@@ -10,8 +10,8 @@ python = "^3.10"
 pandas = "^2.2.2"
 pyyaml = "^6.0.2"
 requests = "*"
-mygene = "*"
-playwright = "1.46.0"
+mygene = "*"  # 依赖重
+playwright = "1.46.0" # playwright还用吗目前用不到
 networkx = "*"
 matplotlib = "*"
 matplotlib-venn = "*"
@@ -19,8 +19,6 @@ docker = "*"
 py3dmol = "*"
 gseapy = "^1.1.3"
 plotnine = "*"
-bioblend = "*"
-planemo = "*"
 prolif = "*"
 numpy = "1.26.4"
 beautifulsoup4 = "*"
@@ -29,7 +27,7 @@ termcolor = "*"
 rdkit = "*"
 
 [tool.poetry.scripts]
-smina = "biorange.dock.smina:main"
+biorange = "biorange:init_print"
 
 [[tool.poetry.source]]
 name = "mirrors"
